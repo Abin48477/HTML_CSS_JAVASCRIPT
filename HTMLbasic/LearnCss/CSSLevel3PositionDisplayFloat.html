@@ -1,0 +1,48 @@
+<!--
+| Value          | Meaning                                   |
+| -------------- | ----------------------------------------- |
+| `block`        | Full width, new line (e.g. `<div>`)       |
+| `inline`       | Stays with other elements (e.g. `<span>`) |
+| `inline-block` | Inline but can set width/height           |
+| `none`         | Hides the element                         | -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+    .box1 {
+      width: 200px;
+      height: 100px;
+      background-color: green;
+      float: left;
+      margin-right: 20px;
+    }
+
+    .box2 {
+      width: 200px;
+      height: 100px;
+      background-color: skyblue;
+      float: left;
+      margin-right: 20px;
+    }
+    .box3 {
+        width:200px;
+        height:100px;
+        background-color: yellow;
+        float:left;
+    }
+
+    .clear {
+      clear:all;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="box1">Left Box</div>
+  <div class="box2">Right Box</div>
+  <div class = "box3">Center Box</div>
+  <div class="clear"></div>
+<!-- 📌 Add clear: both; after floated boxes to fix layout. -->
+</body>
+</html>
