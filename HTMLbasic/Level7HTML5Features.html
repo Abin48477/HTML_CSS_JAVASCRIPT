@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Responsive Form & Canvas</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .form-container {
+      width: 90%;
+      max-width: 500px;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input {
+      padding: 8px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    canvas {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      border: 1px solid #000;
+      margin-top: 20px;
+    }
+
+    @media (max-width: 600px) {
+      input, label {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Responsive Input Form</h2>
+  <div class="form-container">
+    <label for="email">Email</label>
+    <input type="email" id="email" placeholder="Enter your email" required />
+
+    <label for="url">Website or Link</label>
+    <input type="url" id="url" placeholder="Enter your link" required />
+
+    <label for="date">Select a Date</label>
+    <input type="date" id="date" />
+
+    <label for="time">Select a Time</label>
+    <input type="time" id="time" />
+
+    <label for="color">Choose a Color</label>
+    <input type="color" id="color" />
+
+    <label for="range">Range Input</label>
+    <input type="range" id="range" />
+  </div>
+
+  <h3>Canvas Drawing</h3>
+  <canvas id="myCanvas" width="400" height="200"></canvas>
+
+  <script>
+    const canvas = document.getElementById("myCanvas");
+    const ctx = canvas.getContext("2d");
+
+    // Adjust canvas dynamically if needed
+    ctx.fillStyle = "blue";
+    ctx.fillRect(50, 50, 150, 75);
+  </script>
+
+</body>
+</html>
