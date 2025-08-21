@@ -9,6 +9,13 @@ Data types (number, string, boolean)
 Operators (+, -, *, /, %, ==, ===, etc.)
 
 Printing (console.log)*/ -->
+<!-- Simple: Print your name, age, and favorite food using console.log.
+
+Medium: Add two numbers and print result.
+
+Hard: Swap two numbers (without using a third variable).
+
+Very Hard: Write a program that takes marks of 5 subjects and prints total, average, and percentage. -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,12 +24,54 @@ Printing (console.log)*/ -->
     <title>Document</title>
 </head>
 <body>
-    <script>
-    let name = "Abin";
+    <script>  
+let name = "Abin";
 let age = 20;
-console.log("My name is " + name + " and I am " + age + " years old");</script>
+let fevFood = "momo"
+
+console.log("My name is " + name + " and I am " + age + " years old."+fevFood+" is my fevorite food");
+let result = 10+20;
+let a = 10;
+let b = 20;
+
+console.log("Before Swap")
+console.log("a = "+a+" b = "+b)
+b = b-a;
+a = a+b;
+console.log("After Swap")
+console.log("a ="+ a + " b = "+b);
+//Very Hard
+let marks = [];
+for(let i = 0; i<5; i++){
+let input= prompt(`Enter the marks for subject ${i+1}:`);
+//convert input to number and store
+marks.push(Number(input));
+}
+console.log("Marks entered:",marks);
+let total=0;
+let average;
+let percentage;
+for(let i = 0;i < marks.length; i++) {
+    total +=marks[i];
+}
+average = total/marks.length;
+
+percentage = (total/500)*100;//if want to make dynamic use
+percentage = (total/(marks.length*100)*100);
+
+// console.log("\nTotal = ",total);
+// console.log(" \nAverage = ",average);
+// console.log(" \nPercentage =",percentage);
+console.log(`\nTotal = ${total}\nAverage = ${average}\nPercentage = ${percentage}%`);
+</script>
+
 </body>
 </html>
 
 
 
+<!-- 
+- marks is an array that stores the values.
+- prompt() asks the user to enter marks one by one.
+- Number(input) ensures the input is treated as a number.
+ -->
