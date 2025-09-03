@@ -1,0 +1,51 @@
+<!-- JavaScript Output -->
+
+<!DOCTYPE html>
+<html>
+
+<body>
+    <!-- innerHTML -->
+
+    <h1>Hare Krishna! This is My First Web Page.</h1>
+
+    <p>My First Paragraph</p>
+    <p id="demo"></p>
+    <script>
+        document.getElementById("demo").innerHTML = "<h2> Hare Krishna!";
+    </script>
+
+    <!-- innerText -->
+    <p id="innertext"></p>
+    <script>
+        document.getElementById("innertext").innerText = "Haribol!!";
+    </script>
+
+    <!-- document.write() -->
+    <script>
+        document.write(5 + 6);
+    </script>
+    <!-- Using document.write() after an HTML document is loaded, will delete all existing HTML: -->
+    <br> <button type="button" onclick="document.write(5+6)">Try it</button>
+    <!-- The document.write() method should only be used for testing. -->
+
+    <!-- Using window.alert -->
+    <script>
+        window.alert(600 = 3000);
+
+    </script>
+    <script>
+        alert(10 * 100)
+    </script>
+
+    <!-- Using console.log() -->
+    <script>
+        console.log(2000 - 400);
+    </script>
+
+    <!-- JavaScript Print -->
+
+    <button onclick="window.print()">Print this page</button>
+    <!-- The only exception is that you can call the window.print() method in the browser to print the content of the current window. -->
+</body>
+
+</html>
