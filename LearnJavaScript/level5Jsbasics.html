@@ -26,5 +26,28 @@ A new Array
 A new Object
 A new Function
 A new RegExp -->
+<!--        Constant Objects and Arrays
+
+The keyword const is a little misleading.
+
+It does not define a constant value. It defines a constant reference to a value.
+Because of this you can NOT:
+
+1.Reassign a constant value
+2.Reassign a constant array
+3.Reassign a constant object
+But you CAN:
+
+1.Change the elements of constant array
+2.Change the properties of constant object -->
+<script>
+    const cars = ["Saab", "Volvo", "BMW"];
+    cars = ["Toyota", "Volvo", "Audi"];    // ERROR
+    
+    const car = {type:"Fiat", model:"500", color:"white"};
+    car = {type:"Volvo", model:"EX60", color:"red"}    // ERROR
+
+</script>
+
 </body>
 </html>
