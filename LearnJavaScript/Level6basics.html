@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    
+    let x = 5;
+    let z = x ** 2;
+    let y = Math.pow(x,3);
+    console.log("power "+y);
+    console.log(" Exponentiation "+z);
+
+    </script>
+    
+    <!--1. check if number is positive or negative
+      -->
+    <script>
+        let num1= 10;
+        let num2 = -2;
+        if(num1 > 0){
+            console.log("positive");
+        }
+        else{
+            console.log("negative");
+        }
+        if(num2 > 0){
+            console.log("positive");
+
+        }
+        else{
+            console.log("negative");
+        }
+
+    </script>
+    <!-- 2.print muntiplication table of 5 -->
+     <script>
+        let num = 5;
+        let i;
+            console.log("Muntiplication table of 5:")
+
+        for(i = 1; i <=10 ;i++){
+            console.log(num+" * "+i+" = "+num*i);
+        }
+     </script>
+         <!-- 3.print all the prime numbers between 1 to 100. -->
+
+     <script>
+        let j;
+        let count=0;
+        let numm;
+     console.log("prime numbers are:\n");
+            
+        for(j = 2; j < 100; j++){
+                numm = Math.sqrt(j);
+            for(let k = 2; k<=numm ;k++){
+                    if(j % k ==0){
+                        count++;
+                    }
+            }
+            if(count == 0){
+                console.log(j);
+            }
+            count = 0;
+        }
+        
+     </script>
+     <!-- User input -->
+     <script>
+ const userName = prompt("Please enter your name");
+      console.log(`Hello, ${userName}!`);
+     </script>
+     <!-- 4.print the fiboancci series up to n -->
+      <script>
+        console.log("fibonacci series:")
+        let num4 = +prompt(" Enter any number "); 
+        let a =0;
+        let b =1;
+        let c ;
+        console.log(a);
+        console.log(b);
+        for(let i = 2; i < num4 ;i++){
+                c = a+b;
+        console.log(c);
+                a = b;
+                b = c;
+        }
+
+      </script>
+
+</body>
+</html>
