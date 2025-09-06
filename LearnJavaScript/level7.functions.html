@@ -62,9 +62,10 @@
             remainder = n % 10;
             reversed = reversed * 10 + remainder;
             n = Math.floor(n / 10);
-// Math.floor() always returns the largest integer less than or equal to the provided number.
-// This means it effectively "chops off" or discards the decimal part of a positive number. For example, Math.floor(3.76) returns 3.
-// When dealing with negative numbers, it rounds down towards the more negative integer. For example, Math.floor(-3.2) returns -4, and Math.floor(-3.9) also returns -4. 
+//  Math.floor() effectively "chops off" or discards the decimal part of a positive number.
+//  For example, Math.floor(3.76) returns 3.
+// When dealing with negative numbers, it rounds down towards the more negative integer.
+//  For example, Math.floor(-3.2) returns -4, and Math.floor(-3.9) also returns -4. 
 
         }
         if (origional == reversed) {
