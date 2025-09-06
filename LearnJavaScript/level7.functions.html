@@ -1,11 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    
+    <!-- Normal function -->
+    <script>
+        function greet(name) {
+            console.log("Hello " + name + "!");
+
+        }
+        greet("Abin");
+    </script>
+    <!-- Function with Return -->
+    <script>
+        function square(x) {
+            return x * x;
+        }
+        let result = square(5);
+        console.log(result);
+    </script>
+
+    <!-- Arrow Function(modern JS) -->
+    <script>
+        const add = (a, b) => a + b;
+        console.log(add(3, 7));
+
+    </script>
+
+    <!-- Parameters & Arguments -->
+    <script>
+        function multiply(a, b) {
+            return a * b;
+
+        }
+        console.log(multiply(4, 6));
+    </script>
+    <!-- 1.function to add two numbers -->
+    <p id=demo></p>
+    <script>
+        function mySum(a1, a2) {
+            return a1 + a2;
+        }
+        let results = mySum(30, 40);
+        document.getElementById("demo").innerHTML = "The result is :" + results;
+
+    </script>
+
+    <!-- 2.function to check if a string is palindrome. -->
+    <p id="d"></p>
+    <script>
+        let n = 12321;
+        let remainder = 0;
+        let reversed = 0;
+        let origional = n;
+        while (n != 0) {
+            remainder = n % 10;
+            reversed = reversed * 10 + remainder;
+            n = Math.floor(n / 10);
+// Math.floor() always returns the largest integer less than or equal to the provided number.
+// This means it effectively "chops off" or discards the decimal part of a positive number. For example, Math.floor(3.76) returns 3.
+// When dealing with negative numbers, it rounds down towards the more negative integer. For example, Math.floor(-3.2) returns -4, and Math.floor(-3.9) also returns -4. 
+
+        }
+        if (origional == reversed) {
+            document.getElementById("d").innerHTML = origional + " is a palindrome number.";
+
+        }
+        else {
+            document.getElementById("d").innerHTML = origional + " is not a palindrome number";
+        }
+
+    </script>
+    <!-- 3.function to find factorical of a njumber -->
+
 </body>
+
 </html>
