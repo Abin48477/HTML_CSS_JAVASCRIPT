@@ -1,0 +1,29 @@
+body {
+    font-family: Arial;
+    scroll-behavior: smooth;
+    text-align:center;
+}
+nav {
+    background-color:#9ccc65;
+    padding:10px;
+    position:sticky;
+    top: 0;
+    line-height:20px;
+    letter-spacing:2px;
+    color:rgb(124, 42, 201);
+    border-radius: 10px;
+    border:1px solid #3c6e04
+}
+nav a {
+    margin: 15px;
+    text-decoration:none;
+    color:white;
+    font-weight: bold;
+
+}
+section {
+    margin:50px 0;
+    padding:20px;
+    border:2px solid #ccc;
+    border-radius:10px;
+}

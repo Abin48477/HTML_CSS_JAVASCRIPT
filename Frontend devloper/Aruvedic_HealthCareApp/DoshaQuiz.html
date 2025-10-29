@@ -1,11 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Ayurvedic Health Portal</title>
+    <script src="script.js"></script>
+    <link href="style.css" rel="stylesheet" />
 </head>
+
 <body>
-    
+    <!-- Navagation Bar -->
+    <nav>
+        <a href="#quiz">Dosha Quiz</a>
+        <a href="#remedy">Remedy Finder</a>
+        </nav>
+     <!-- Dosha Quiz Section -->
+        <section id="quiz">
+            <h2>Find Your Ayurvedic Dosha</h2>
+    <div id="question1">
+        <p>1. Your body usually feels:</p>
+        <button onclick="selectAnswer('vata')">Light</button>
+        <button onclick="selectAnswer('pitta')">Warm</button>
+        <button onclick="selectAnswer('kapha')">Heavy</button>
+    </div>
+    <div id="question2">
+        <p>2.Your digestion is mostly:</p>
+        <button onclick="selectAnswer('vata')">Irregular</button>
+        <button onclick="selectAnswer('pitta')">Strong</button>
+        <button onclick="selectAnswer('kapha')">Slow</button>
+    </div>
+    <div id="question3">
+        <p>3. Your sleep pattern is:</p>
+        <button onclick="selectAnswer('vata')">Light & Easily disturbed</button>
+        <button onclick="selectAnswer('pitta')">Medium & normal</button>
+        <button onclick="selectAnswer('kapha')">Deep & Long</button>
+    </div>
+
+    <div id="question4">
+        <p>4. Your hunger level is:</p>
+        <button onclick="selectAnswer('vata')">Somethimes Hungry</button>
+        <button onclick="selectAnswer('pitta')">Always Hungry</button>
+        <button onclick="selectAnswer('kapha')">Rarly Hungry</button>
+    </div>
+    <div id="question5">
+        <p>5. Your personality tends to be: </p>
+        <button onclick="selectAnswer('vata')">Imaginative</button>
+        <button onclick="selectAnswer('pitta')">Intense</button>
+        <button onclick="selectAnswer('kapha')">Calm</button>
+    </div>
+    <div id="question6">
+        <p>6.Your reaction on stress:</p>
+        <button onclick="selectAnswer('vata')">Worry</button>
+        <button onclick="selectAnswer('pitta')">Anger</button>
+        <button onclick="selectAnswer('kapha')">Withdrawal</button>
+    </div>
+    <div id="question7">
+        <p>7.Your skin type:</p>
+        <button onclick="selectAnswer('vata')">Dry</button>
+        <button onclick="selectAnswer('pitta')">Warm-Red</button>
+        <button onclick="selectAnswer('kapha')">Smooth-Oily</button>
+    </div>
+    <div id="question8">
+        <p>8.Your body energy style:</p>
+        <button onclick="selectAnswer('vata')">Fast but tries quickly</button>
+        <button onclick="selectAnswer('pitta')">Strong & Sharp</button>
+        <button onclick="selectAnswer('kapha')">Slow but Steady</button>
+    </div>
+    <button onclick="showResult()">Show My Dosha</button>
+    </section>
+
+    <!-- Symptom-Remedy Suggestion System -->
+     <section id="remedy">
+    <h2>Find Ayurvedic Remedies by Symptom</h2>
+
+    <label for="symptom">Enter the symptom</label>
+    <input type="text" id="symptom" placeholder="e.g.,cough,fever,headache,etc." />
+    <button onclick="findRemedy()">Search Remedy</button>
+    <p id="remedyResult"></p>
+    </section>
+    <footer>
+        <p>2025 Ayurvedic Health Portal by Abin</p>
+    </footer>
 </body>
+
 </html>
