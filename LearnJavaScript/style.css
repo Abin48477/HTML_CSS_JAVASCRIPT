@@ -1,0 +1,33 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: black;
+    font-family: Arial, sans-serif;
+}
+
+.clock {
+    color: #00ffea;
+    font-size: 80px;
+    letter-spacing: 5px;
+    background: #222;
+    padding: 20px 60px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px #00ffea;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+h1 {
+    background-color: aquamarine;
+    box-shadow: 0 0 23px #00ffea;
+    border-radius: 10px;
+    font-size: 25px;
+    font-family:  monospace;
+}
