@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Auto Favicon Change</title>
+  <link id="favicon" rel="icon" href="leafImage.jpg" type="image/jpg">
+</head>
+<body>
+  <script>
+    const icons = ["leafImage.jpg", "new_image.jpg"];
+    let i = 0;
+
+    setInterval(() => {
+      document.querySelector("link[rel='icon']").href = icons[i];
+      i = (i + 1) % icons.length; // loop back
+    }, 2000); // change every 2 seconds
+  </script>
+</body>
+</html>
