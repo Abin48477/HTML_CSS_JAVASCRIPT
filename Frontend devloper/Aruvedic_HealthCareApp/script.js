@@ -7,7 +7,6 @@ function selectAnswer(dosha) {
     else if (dosha === 'pitta') pitta++;
     else if (dosha === 'kapha') kapha++;
 
-    alert("Selected:" + dosha);
 }
 
 function showResult() {
@@ -47,3 +46,12 @@ function findRemedy() {
 
     document.getElementById('remedyResult').innerText = remedy;
 }
+
+const icons = ["leafImage.jpg", "new_image.jpg"];
+    let i = 0;
+
+    setInterval(() => {
+      document.querySelector("link[rel='icon']").href = icons[i];
+      i = (i + 1) % icons.length; // loop back
+    }, 2000); // change every 2 seconds
+
