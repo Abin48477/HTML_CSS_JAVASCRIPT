@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tilted Cards Product Carousel</title>
+
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: "Poppins", sans-serif;
+            background: #eef2f7;
+        }
+
+        .carousel-container {
+            max-width: 1100px;
+            margin: 60px auto;
+            padding: 30px 20px;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        /* Card */
+        .owl-carousel .item-card {
+            border-radius: 22px;
+            overflow: hidden;
+            background: #f6fff5;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.07);
+            margin: 16px 8px;
+            padding-bottom: 18px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 380px;
+            transition: 0.6s cubic-bezier(.5,1.5,.5,1);
+            will-change: transform;
+        }
+
+        .owl-carousel .item-card img {
+            margin-top: 28px;
+            width: 160px;
+            height: 160px;
+            object-fit: contain;
+            transition: 0.5s cubic-bezier(.5,1.5,.5,1);
+        }
+
+        .product-name {
+            font-size: 15px;
+            font-weight: 600;
+            padding: 15px 20px 8px;
+            text-align: center;
+            color: #2d4237;
+        }
+
+        .product-price {
+            font-size: 17px;
+            color: #0d7907;
+            font-weight: 700;
+            text-align: center;
+            margin-top: auto;
+            padding-bottom: 10px;
+        }
+
+        /* HOVER */
+        .item-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 14px 32px rgba(0,0,0,0.15);
+        }
+
+        /* Tilted side cards */
+        .owl-item.active:first-child .item-card {
+            transform: rotate(-11deg) scale(0.87) translateY(25px);
+            opacity: 0.8;
+        }
+        .owl-item.active:last-child .item-card {
+            transform: rotate(11deg) scale(0.87) translateY(25px);
+            opacity: 0.8;
+        }
+
+        /* Center card focus */
+        .owl-item.active.center .item-card {
+            transform: rotate(0deg) scale(1.12) translateY(-10px);
+            z-index: 3;
+            opacity: 1;
+            box-shadow: 0 18px 40px rgba(0,0,0,0.18);
+        }
+
+        /* Mobile */
+        @media (max-width: 700px) {
+            .carousel-container {
+                padding: 8px;
+            }
+
+            .owl-carousel .item-card {
+                min-height: 250px;
+            }
+
+            .owl-carousel .item-card img {
+                width: 90px;
+                height: 90px;
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="carousel-container">
+        <div class="owl-carousel owl-theme">
+
+            <div>
+                <div class="item-card">
+                    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=60">
+                    <div class="product-name">Patanjali Shuddha Shilajit 50 gm</div>
+                    <div class="product-price">NRs. 799.00</div>
+                </div>
+            </div>
+
+            <div>
+                <div class="item-card">
+                    <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=800&q=60">
+                    <div class="product-name">Patanjali Shuddha Shilajit 20 gm</div>
+                    <div class="product-price">NRs. 399.00</div>
+                </div>
+            </div>
+
+            <div>
+                <div class="item-card">
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=60">
+                    <div class="product-name">Patanjali Dant Kanti Natural 200g + 100g + Germi-X Soap Free</div>
+                    <div class="product-price">NRs. 250.00</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+    <script>
+        $('.owl-carousel').owlCarousel({
+            center: true,
+            loop: true,
+            margin: 12,
+            nav: true,
+            dots: true,
+            navText: ["<", ">"],
+            autoplay: true,
+            autoplayTimeout: 2600,
+            smartSpeed: 650,
+            responsive: {
+                0: { items: 1 },
+                700: { items: 3 }
+            }
+        });
+
+        $('.owl-nav button.owl-prev').attr('aria-label', 'Previous Slide');
+        $('.owl-nav button.owl-next').attr('aria-label', 'Next Slide');
+    </script>
+
+</body>
+</html>
