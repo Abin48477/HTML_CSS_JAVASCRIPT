@@ -1,0 +1,45 @@
+.dashboard {
+    display: grid;
+    grid-template-columns: 250px 1fr ;     /* Sidebar + main area */
+    grid-template-rows: 70px 1fr 200px;   /* Header, content, stats */
+
+    grid-template-areas: 
+        "sidebar header"
+        "sidebar content"
+        "sidebar stats";
+
+    height: 100vh;
+    gap: 15px;
+    padding: 15px;
+    background: #e8e8e8;
+}
+
+/* Styling each section */
+.sidebar {
+    grid-area: sidebar;/* Sidebar area */
+    background: #111;
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.header {
+    grid-area: header;/* Header area */
+    background: rgba(215, 171, 11, 0.178);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.content {
+    grid-area: content;/* Content area */
+    background: rgb(200, 156, 156);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.stats {
+    grid-area: stats;   /* Stats area */
+    background: rgb(157, 193, 164);
+    padding: 20px;
+    border-radius: 10px;
+}

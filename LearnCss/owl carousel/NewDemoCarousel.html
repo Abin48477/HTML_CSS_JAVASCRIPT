@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>3D Carousel/Slider Demo</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<style>
+:root {
+  --crsl-bg: transparent;
+  --box-bg: #1e272e;
+  --box-shadow: #0000001c;
+  --box-shadow-border: #0000000f;
+  --box-border: #fff;
+}
+
+body, html {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(47,53,57,1) 0%, rgba(30,39,46,1) 100%);
+  font-family: 'Source Sans Pro', Arial, sans-serif;
+}
+.carousel {
+  padding-top: 125px; 
+  position: relative;
+  width: 100%;
+}
+.carousel__body {
+  width: 100%;
+  padding: 20px 0 50px 0;
+  overflow: hidden;
+}
+.carousel__prev, .carousel__next {
+  position: absolute;
+  bottom: -15%;
+  transition: transform 0.25s ease;
+}
+.carousel__prev i, .carousel__next i {
+  font-size: 60px;
+  color: var(--box-border);
+  cursor: pointer;
+}
+.carousel__prev:hover, .carousel__next:hover { transform: scale(1.25);}
+.carousel__prev { left: 40%; }
+.carousel__next { right: 40%; }
+
+.carousel__slider {
+  position: relative;
+  background: var(--crsl-bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 1s cubic-bezier(.5,1.5,.5,1.0);
+}
+.carousel__slider__item {
+  margin: 0 20px;
+  perspective: 1200px;
+  flex: 0 0 auto;
+}
+.item__3d-frame {
+  width: 260px;
+  height: 260px;
+  position: relative;
+  transition: transform 0.8s cubic-bezier(.5,1.5,.5,1.0);
+  transform-style: preserve-3d;
+}
+.item__3d-frame__box {
+  position: absolute;
+  border-radius: 18px;
+  box-sizing: border-box;
+  width: 260px; height: 260px;
+  border: 3px solid var(--box-border);
+  box-shadow: 0 8px 24px var(--box-shadow);
+  background: var(--box-bg);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0; left: 0;
+}
+.item__3d-frame__box--front img {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+}
+.item__3d-frame__box--front {
+  transform: rotateY(0deg) translateZ(0px);
+  z-index: 2;
+}
+.item__3d-frame__box--left {
+  width: 40px;
+  left: 0;
+  transform: translate3d(1px,0,-40px) rotateY(-90deg);
+}
+.item__3d-frame__box--right {
+  width: 40px;
+  right: 0;
+  transform: translate3d(-1px,0,-40px) rotateY(90deg);
+}
+.carousel__slider__item--active .item__3d-frame {
+  z-index: 2;
+  transform: perspective(1200px);
+  box-shadow: 0 30px 50px #00000036;
+}
+.carousel__slider__item--active {
+  filter: brightness(1.05);
+}
+@media (max-width:600px) {
+  .item__3d-frame, .item__3d-frame__box {
+    width: 120px; height: 120px;
+  }
+  .item__3d-frame__box--front img {
+    width: 90px; height: 90px;
+  }
+}
+</style>
+</head>
+<body>
+<div class="carousel">
+  <div class="carousel__body">
+    <div class="carousel__prev"><i class="fas fa-angle-left"></i></div>
+    <div class="carousel__next"><i class="fas fa-angle-right"></i></div>
+    <div class="carousel__slider">
+      <div class="carousel__slider__item">
+        <div class="item__3d-frame">
+          <div class="item__3d-frame__box item__3d-frame__box--front"><img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=60" alt="Image 1"></div>
+          <div class="item__3d-frame__box item__3d-frame__box--left"></div>
+          <div class="item__3d-frame__box item__3d-frame__box--right"></div>
+        </div>
+      </div>
+      <div class="carousel__slider__item">
+        <div class="item__3d-frame">
+          <div class="item__3d-frame__box item__3d-frame__box--front"><img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=800&q=60" alt="Image 2"></div>
+          <div class="item__3d-frame__box item__3d-frame__box--left"></div>
+          <div class="item__3d-frame__box item__3d-frame__box--right"></div>
+        </div>
+      </div>
+      <!-- Add more carousel__slider__item blocks for every image -->
+      <div class="carousel__slider__item">
+        <div class="item__3d-frame">
+          <div class="item__3d-frame__box item__3d-frame__box--front"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=60" alt="Image 3"></div>
+          <div class="item__3d-frame__box item__3d-frame__box--left"></div>
+          <div class="item__3d-frame__box item__3d-frame__box--right"></div>
+        </div>
+      </div>
+      <!-- ...Repeat for as many images as needed... -->
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  "use strict";
+  var carousel = document.querySelector('.carousel'),
+      slider = carousel.querySelector('.carousel__slider'),
+      items = carousel.querySelectorAll('.carousel__slider__item'),
+      prevBtn = carousel.querySelector('.carousel__prev'),
+      nextBtn = carousel.querySelector('.carousel__next');
+
+  var width, height, margin = 20, currIndex = 0, interval, intervalTime = 3200;
+
+  function init() {
+    resize();
+    move(Math.floor(items.length / 2));
+    bindEvents();
+    timer();
+  }
+  function resize() {
+    width = Math.max(window.innerWidth * .25, 220);
+    height = width;
+    slider.style.width = ((width + margin * 2) * items.length) + "px";
+    for(var i = 0; i < items.length; i++) {
+      items[i].style.width = (width) + "px";
+      items[i].style.height = height + "px";
+    }
+  }
+  function move(index) {
+    if(index < 1) index = items.length;
+    if(index > items.length) index = 1;
+    currIndex = index;
+    for(var i = 0; i < items.length; i++) {
+      let item = items[i],
+          box = item.querySelector('.item__3d-frame');
+      if(i == (index - 1)) {
+        item.classList.add('carousel__slider__item--active');
+        box.style.transform = "perspective(1200px)";
+      } else {
+        item.classList.remove('carousel__slider__item--active');
+        box.style.transform = "perspective(1200px) rotateY(" + (i < (index-1) ? 40 : -40) + "deg)";
+      }
+    }
+    slider.style.transform =
+      "translate3d(" + (
+        (index * -width) + (width / 2) + window.innerWidth / 2
+      ) + "px, 0, 0)";
+  }
+  function timer() {
+    clearInterval(interval);
+    interval = setInterval(() => { move(++currIndex); }, intervalTime);
+  }
+  function prev() {
+    move(--currIndex); timer();
+  }
+  function next() {
+    move(++currIndex); timer();
+  }
+  function bindEvents() {
+    window.onresize = resize;
+    prevBtn.addEventListener('click', prev);
+    nextBtn.addEventListener('click', next);
+  }
+  init();
+})();
+</script>
+</body>
+</html>
