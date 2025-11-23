@@ -38,10 +38,16 @@
     <style>
         @media (max-width: 768px) {
             .responsive-grid {
-                grid-template-columns: 1fr 1fr;
+                /* grid-template-columns: 1fr 1fr; */
+                grid-template-columns: 2fr 1fr;
                 /* 2 columns */
             }
-            }
+             /* .box.c {
+                grid-column: span 2;
+                }
+                /* Make the right sidebar span across both columns */
+            
+        }
         
     </style>
     <!-- Mobile view -->
@@ -51,15 +57,34 @@
                 grid-template-columns: 1fr;
                 /* 1 column  layout*/
             }
-
         }
     </style>
 </body>
 
 </html>
-<!-- 
- Left Brother → Sidebar
+<!-- ⭐ 1. repeat()
+👉 Helps you write columns/rows without typing them again and again.
+Without repeat():
+grid-template-columns: 1fr 1fr 1fr;
+With repeat():
+grid-template-columns: repeat(3, 1fr);
+✔ Saves time
+✔ Cleaner code 
+⭐ 2. minmax(min, max)
+👉 Sets minimum and maximum size of a column or row.
+Example:
+grid-template-columns: minmax(200px, 1fr);  
+Means:
+Never smaller than 200px
+Can grow up to 1fr
+Perfect for responsive boxes.
+⭐ 3. auto-fit
+👉 Automatically fits as many boxes in a row as possible.
+Example:
+grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+This means:
 
-Middle Brother → Main Content
-
-Right Brother → Info/Ads -->
+Each box is at least 200px
+Can grow to 1fr
+Grid will automatically add/remove columns based on screen size
+(like magic responsive layout) -->  
