@@ -18,19 +18,20 @@
     <style>
         .responsive-grid {
             display: grid;
-            grid-template-columns: 1fr 2fr 1fr;
-            /* 3 columns */
+            grid-template-columns: repeat(3,1fr);/*Three equal columns for larger screen */
             gap: 20px;
             padding: 20px;
-
+            background-color: #f5f5f5;
         }
 
         .box {
-            background-color: white;
+            background-color: rgb(222, 172, 172);
             padding: 30px;
             border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(9, 0, 0, 0.1);
+            text-align: center;
+            border: 2px solid #ccc;
         }
+
     </style>
 
     <!-- Tablet view -->
@@ -39,12 +40,6 @@
             .responsive-grid {
                 grid-template-columns: 1fr 1fr;
                 /* 2 columns */
-            }
-
-            .c {
-                /* Only the right sidebar spans two columns to occupy full width in tablet view */
-                grid-column: span 2;
-                /* right sidebar takes full width */
             }
             }
         

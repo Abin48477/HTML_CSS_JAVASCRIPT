@@ -8,6 +8,7 @@
 </head>
 <body>
     <section class="dashboard">
+        
         <div class="sidebar">Sidebar</div>
         <div class="header">Header</div>
         <div class="content">Main Content</div>
@@ -16,3 +17,37 @@
     </section>
 </body>
 </html>
+<!-- ⭐ 1. repeat()
+👉 Helps you write columns/rows without typing them again and again.
+
+Without repeat():
+grid-template-columns: 1fr 1fr 1fr 1fr;
+
+With repeat():
+grid-template-columns: repeat(4, 1fr);
+
+✔ Saves time
+✔ Cleaner code
+
+⭐ 2. minmax(min, max)
+👉 Sets minimum and maximum size of a column or row.
+Example:
+grid-template-columns: minmax(200px, 1fr);
+
+Means:
+Never smaller than 200px
+Can grow up to 1fr
+
+Perfect for responsive boxes.
+
+⭐ 3. auto-fit
+👉 Automatically fits as many boxes in a row as possible.
+Example:
+grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+This means:
+
+Each box is at least 200px
+Can grow to 1fr
+
+Grid will automatically add/remove columns based on screen size
+(like magic responsive layout) -->
