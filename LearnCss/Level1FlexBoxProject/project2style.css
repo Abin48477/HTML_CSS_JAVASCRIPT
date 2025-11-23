@@ -1,0 +1,20 @@
+.card-container {
+    display: flex;
+    /*flexbox layout*/
+    justify-content: center;
+    /*center the cards horizontally*/
+    gap: 20px;/* Sets both row-gap and column-gap to 20px it makes changes on*/
+    margin-top: 40px;
+}
+
+.card {
+    width: 250px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+    /*subtle shadow the value tells */
+    text-align: center;
+}
+
+/* A row is a horizontal arrangement, running from left to right, while a column is a vertical arrangement, running from top to bottom. */
