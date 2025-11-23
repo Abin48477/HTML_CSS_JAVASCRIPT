@@ -1,0 +1,31 @@
+.gallery {
+    display: grid;
+    gap:15px;/*Space btwn images*/
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));/*Responsive columns*/
+  /*  auto-fit = fits as many columns as possible
+        minmax = each column min 250px, max full width
+        1fr = divide remaining space equally
+    */
+    padding:30px;
+}
+.gallery img {
+    width:100%;/*Full width of grid cell*/
+    height:250px;/*Fixed height for uniformity*/
+    object-fit:cover;/*it makes sure the image covers the entire area without distortion*/
+    border-radius:8px;/*Rounded corners*/
+    box-shadow: 4px 4px 8px rgba(0,0,0,0.6);/*Adds shadow to images*/
+}
+body {
+    margin:0;
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+}
+.gallery img:hover {
+    transform: scale(1.05);/*Slight zoom on hover*/
+    transition: transform 0.3s ease;/*Smooth transition*/
+}
+/* how to take only one image and make it large? 
+.gallery img:nth-child(1) {
+    grid-column: span 2; /* Make the first image span two columns 
+    height: 500px; Increase height for emphasis 
+} */

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <section class="responsive-grid">
+
+        <div class="box a">Left Sidebar</div>
+        <div class="box b">Main Content</div>
+        <div class="box c">Right Sidebar</div>
+    </section>
+    <!-- desktop view -->
+    <style>
+        .responsive-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            /* 3 columns */
+            gap: 20px;
+            padding: 20px;
+
+        }
+
+        .box {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(9, 0, 0, 0.1);
+        }
+    </style>
+
+    <!-- Tablet view -->
+    <style>
+        @media (max-width: 768px) {
+            .responsive-grid {
+                grid-template-columns: 1fr 1fr;
+                /* 2 columns */
+            }
+
+            .c {
+                /* Only the right sidebar spans two columns to occupy full width in tablet view */
+                grid-column: span 2;
+                /* right sidebar takes full width */
+            }
+            }
+        
+    </style>
+    <!-- Mobile view -->
+    <style>
+        @media (max-width: 480px) {
+            .responsive-grid {
+                grid-template-columns: 1fr;
+                /* 1 column  layout*/
+            }
+
+        }
+    </style>
+</body>
+
+</html>
+<!-- 
+ Left Brother → Sidebar
+
+Middle Brother → Main Content
+
+Right Brother → Info/Ads -->

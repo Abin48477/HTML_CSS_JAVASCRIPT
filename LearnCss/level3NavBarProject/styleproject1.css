@@ -53,4 +53,10 @@ gap:20px;
     font-weight:bold;
     cursor:pointer;
 }
+.logo:hover{
+    text-decoration: underline;
+}
+
+
+
 
