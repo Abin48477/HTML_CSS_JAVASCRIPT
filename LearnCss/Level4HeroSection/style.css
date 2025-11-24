@@ -1,0 +1,42 @@
+.hero {
+    height: 80vh;
+    /*viewport height it is different and it makes the hero section take 80% of the viewport height it means 80% of the visible area of the browser window*/
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),/*overlay effect with linear gradient to darken the image for better text visibility */
+        url('CubicImage.png');/*you can add your own image link here*/
+    background-size: cover;
+    background-position: center;/*center the image*/
+    display:flex;/*flexbox to center the content*/
+    justify-content: center;/*center horizontally*/
+    align-items: center;/*center vertically*/
+    color: white;
+    text-align: center;
+    padding: 0 20px;/*left 0 and right 20px padding*/
+    font-style: italic;
+    font-family:  Tahoma, Geneva, Verdana, sans-serif;
+}
+.hero-content h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+.hero-content p {
+    font-size:20px;
+}
+/* Responsive styles for tablets */
+@media (max-width:768px){
+    .hero-content h1 {
+        font-size: 32px;
+    }
+    .hero-content p {
+        font-size:16px;
+    }
+}
+/* Responsive styles for smaller screens */
+@media (max-width:480px){
+    .hero-content h1 {
+        font-size: 24px;
+    }
+    .hero-content p {
+        font-size:14px;
+    }
+}
