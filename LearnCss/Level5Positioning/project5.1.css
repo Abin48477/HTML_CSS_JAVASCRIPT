@@ -1,0 +1,48 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #f0f0f0;
+
+}
+.image-box {
+    position: relative;/* it means child elements with absolute positioning will be positioned relative to this container */
+    top: 30px;
+    left: 50%;
+    /*parent container relative positioning makes */
+    width: 400px;
+}
+
+.image-box img {
+    width: 100%;
+    /*image takes full width of container*/
+    display: block;
+    /*remove bottom space */
+    border-radius: 10px;
+
+}
+
+.btn {
+    position: absolute;
+    /*child becomes movable it changes according to parent container*/
+    bottom: 20px;
+    /*20px from bottom*/
+    left: 50%;
+    /*center horizontally*/
+    transform: translateX(-50%);
+    /*adjust position to be exactly centered*/
+
+    padding: 10px 20px;
+    /*left right 20px top bottom 10px*/
+    background: #3498db;
+    /*button background color*/
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.btn:hover {
+    background: #2980b9;
+    /*darker blue on hover*/
+}
+
+
