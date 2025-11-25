@@ -7,42 +7,54 @@
 | `none`         | Hides the element                         | -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <style>
-    .box1 {
+    /* .box1 {
       width: 200px;
       height: 100px;
       background-color: green;
       float: left;
       margin-right: 20px;
-    }
+    } */
 
     .box2 {
+      position:relative;
+        left:10px;
+        top:10px;
       width: 200px;
       height: 100px;
       background-color: skyblue;
       float: left;
       margin-right: 20px;
     }
+
     .box3 {
-        width:200px;
-        height:100px;
-        background-color: yellow;
-        float:left;
+      position:absolute;
+      left:0px;
+      top: 0px;
+
+      width: 200px;
+      height: 100px;
+      background-color: yellow;
+      float: left;
     }
 
     .clear {
-      clear:all;
+      clear: all;
     }
-
   </style>
 </head>
+
 <body>
 
-  <div class="box1">Left Box</div>
-  <div class="box2">Right Box</div>
-  <div class = "box3">Center Box</div>
+  <!-- <div class="box1">Left Box green</div> -->
+  <div class="box2">Right Box skyblue
+    <div class="box3">Center Box yellow</div>
+  </div>
   <div class="clear"></div>
-<!-- 📌 Add clear: both; after floated boxes to fix layout. -->
+  <!-- 📌 Add clear: both; after floated boxes to fix layout. -->
 </body>
+
 </html>
+<!-- If parent is relative and child is absolute it means child position change according to parent box yes not body isn't it? -->
