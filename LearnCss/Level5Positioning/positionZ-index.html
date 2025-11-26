@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>position + z-index</title>
+    <style>
+        .one {
+            width:100px;
+            height:100px;
+            background:lightblue;
+            position: relative;
+            top: 50px;
+            left: 20px;
+            z-index:4;/* This comes on top*/
+
+        }
+        .two {
+            width:100px;
+            height:100px;
+            background:lightgreen;
+            position:relative;
+            top:-50px;
+            left: 60px;
+            /* If you remove this z-index, it will be on top of .one */
+            z-index: 2;/* This comes below because it has less z-index */
+        }
+        .three {
+             width:100px;
+            height:100px;
+            background:rgb(232, 232, 12);
+            position: relative;
+            top:-100px;
+            left:60px;
+            z-index:3;
+              
+        }
+    </style>
+
+</head>
+<body>
+    <!-- z-index use  is to control the stacking order and it doesnot word in static position element ie default -->
+    <div class="one">ONE</div>
+    <div class="two">TWO</div>
+    <div class="three">Three</div>
+
+</body>
+</html>
