@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Transform Practical</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .info-section h3 {
+            color: #ff7f50;
+            margin-top: 20px;
+        }
+
+        .info-section h3:first-of-type {
+            margin-top: 0;
+        }
+
+        code {
+            background-color: #e0e0e0;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .code-block {
+            background-color: #2d2d2d;
+            color: #f8f8f8;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            overflow-x: auto;
+        }
+
+        .transform-box {
+            width: 150px;
+            height: 150px;
+            background-color: coral;
+            margin: 50px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            /* Applying multiple transforms */
+            transform: rotate(20deg) scale(1.2) translate(30px);
+            /* Adding transition for smooth effect */
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .transform-box:hover {
+            /* Transform on hover */
+            transform: translateY(-10px) scale(1.05);
+        }
+
+        ul {
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body>
+    <h2>CSS Transform Example</h2>
+    
+    <div class="info-section">
+        <h3>1️⃣ translate() → Move</h3>
+        <p>This moves a box left, right, up, down.</p>
+        <div class="code-block">
+.box {<br>
+&nbsp;&nbsp;transform: translate(50px, 20px);<br>
+}
+        </div>
+        <ul>
+            <li>✔ Moves the box 50px right</li>
+            <li>✔ Moves 20px down</li>
+        </ul>
+        <p>💡 <strong>Think:</strong> Dragging a photo slightly to adjust position. It does NOT affect other elements.</p>
+
+        <h3>2️⃣ scale() → Make Bigger or Smaller</h3>
+        <div class="code-block">
+.box:hover {<br>
+&nbsp;&nbsp;transform: scale(1.2);<br>
+}
+        </div>
+        <p>When mouse goes over the box → 20% bigger</p>
+        <p><strong>✔ Used in:</strong> Hover effects, Buttons, Cards, Images</p>
+        <p>💡 <strong>Think:</strong> Zooming a photo by pinch</p>
+
+        <h3>3️⃣ rotate() → Rotate the box</h3>
+        <div class="code-block">
+.box {<br>
+&nbsp;&nbsp;transform: rotate(10deg);<br>
+}
+        </div>
+        <p>✔ Rotate clockwise 10°</p>
+        <p>💡 <strong>Think:</strong> Tilting your phone slightly</p>
+
+        <h3>⭐ BONUS: Combine Transforms</h3>
+        <div class="code-block">
+transform: translateY(-10px) scale(1.1);
+        </div>
+        <ul>
+            <li>✔ Move up</li>
+            <li>✔ Make bigger</li>
+        </ul>
+        <p><strong>Used in all modern UI cards everywhere.</strong></p>
+    </div>
+
+    <div class="transform-box">
+        Transform Me!
+    </div>
+    <p style="text-align: center; color: #666;">
+        <em>Hover over the box to see the transform effect!</em>
+    </p>
+</body>
+</html>
