@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CSS Keyframes – 80/20 Animations (Runnable)</title>
+
+  <style>
+    /* ===== Base layout for demo ===== */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      background: radial-gradient(circle at 20% -10%, #1f2937, #0f172a 60%);
+      color: #e5e7eb;
+      padding: 28px 14px;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+    .wrap {
+      width: 100%;
+      max-width: 920px;
+      background: rgba(2, 6, 23, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+      padding: 22px 18px 28px;
+    }
+    h1 { font-size: 1.75rem; color: #c7d2fe; margin-bottom: 6px; }
+    .sub { color: #9ca3af; margin-bottom: 18px; font-size: 0.95rem; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+    .card {
+      background: #0b1220;
+      border: 1px solid rgba(55,65,81,0.8);
+      border-radius: 12px;
+      padding: 14px 12px 16px;
+    }
+    .card h2 { font-size: 1.05rem; margin-bottom: 6px; color: #e5e7eb; }
+    .badge {
+      display: inline-block; font-size: 0.75rem; padding: 3px 8px; border-radius: 999px;
+      background: rgba(59,130,246,0.2); border: 1px solid rgba(59,130,246,0.35); color: #bfdbfe;
+      margin-bottom: 8px;
+    }
+    .code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Courier New", monospace;
+      font-size: 0.8rem; background: #020617; color: #e5e7eb;
+      border: 1px solid #111827; border-radius: 8px; padding: 10px 12px; margin-top: 8px;
+      overflow-x: auto; white-space: pre;
+    }
+
+    /* ===== Keyframes and demos ===== */
+
+    /* 1) Fade In: from invisible (0) to visible (1) */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    .demo-fade {
+      padding: 14px 16px; border-radius: 10px;
+      background: linear-gradient(135deg, #0f766e, #1f2937);
+      animation: fadeIn 1s ease-out; /* name duration timing */
+    }
+
+    /* 2) Slide Up: move upward + fade in */
+    @keyframes slideUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to   { transform: translateY(0); opacity: 1; }
+    }
+    .demo-slide {
+      padding: 14px 16px; border-radius: 10px;
+      background: linear-gradient(135deg, #7c3aed, #1f2937);
+      animation: slideUp 0.8s ease-out;
+    }
+
+    /* 3) Pulse: grow a bit then back to normal, repeat */
+    @keyframes pulse {
+      0%   { transform: scale(1); }
+      50%  { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    .demo-btn {
+      margin-top: 8px;
+      padding: 10px 18px;
+      border-radius: 999px; border: none; cursor: pointer;
+      font-weight: 600; letter-spacing: 0.02em; color: #0b1120;
+      background: linear-gradient(135deg, #f59e0b, #facc15);
+      box-shadow: 0 8px 24px rgba(250, 204, 21, 0.35);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    /* 4) Fade + Slide combo: common for cards */
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .demo-card {
+      margin-top: 8px;
+      padding: 16px 16px 18px; border-radius: 12px;
+      background: radial-gradient(circle at 20% 0%, #1d4ed8, #020617);
+      border: 1px solid rgba(191, 219, 254, 0.3);
+      animation: fadeSlide 0.6s ease forwards; /* forwards keeps final state */
+    }
+
+    .demo-card h3 { font-size: 1rem; margin-bottom: 4px; color: #e5e7eb; }
+    .demo-card p  { font-size: 0.86rem; color: #cbd5f5; }
+
+    /* Mini reference */
+    .ref { margin-top: 6px; font-size: 0.78rem; color: #9ca3af; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>CSS Keyframes – 80/20 Animations</h1>
+    <p class="sub">Fade, Slide, Pulse, and a Fade+Slide combo ready to use.</p>
+
+    <div class="grid">
+      <!-- Keyframes concept -->
+      <div class="card">
+        <span class="badge">Keyframes = story</span>
+        <h2>Define movement + apply</h2>
+        <div class="code">
+@keyframes moveBox {
+  from { transform: translateX(0); }
+  to   { transform: translateX(100px); }
+}
+
+/* Apply to an element */
+.box {
+  animation: moveBox 2s ease infinite;
+}
+        </div>
+        <p class="ref">
+          Keyframes define property changes over time; the animation shorthand binds it to an element. [web:48][web:54]
+        </p>
+      </div>
+
+      <!-- Fade in -->
+      <div class="card">
+        <span class="badge">Fade In</span>
+        <h2>Hero / modal reveal</h2>
+        <div class="demo-fade">This text fades in smoothly.</div>
+        <div class="code">
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.hero-text {
+  animation: fadeIn 1s ease;
+}
+        </div>
+      </div>
+
+      <!-- Slide up -->
+      <div class="card">
+        <span class="badge">Slide Up</span>
+        <h2>Sections / cards</h2>
+        <div class="demo-slide">This block slides up and appears.</div>
+        <div class="code">
+@keyframes slideUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+
+.section {
+  animation: slideUp 0.8s ease-out;
+}
+        </div>
+      </div>
+
+      <!-- Pulse CTA -->
+      <div class="card">
+        <span class="badge">Pulse Button</span>
+        <h2>Call‑to‑action highlight</h2>
+        <button class="demo-btn">Get Started</button>
+        <div class="code">
+@keyframes pulse {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+button.cta {
+  animation: pulse 2s ease-in-out infinite;
+}
+        </div>
+      </div>
+
+      <!-- Fade + Slide card -->
+      <div class="card">
+        <span class="badge">Fade + Slide</span>
+        <h2>Modern card entrance</h2>
+        <div class="demo-card">
+          <h3>Premium UI Card</h3>
+          <p>Common in React/Next apps: smooth entrance then keep final state.</p>
+        </div>
+        <div class="code">
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.card {
+  animation: fadeSlide 0.6s ease forwards;
+}
+        </div>
+        <p class="ref">
+          Use forwards to keep the last keyframe after the animation completes. [web:48][web:54]
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
