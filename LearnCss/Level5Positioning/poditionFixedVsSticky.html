@@ -1,0 +1,84 @@
+<!-- ⭐ position: fixed vs sticky
+These two make things stay in place, but in different ways.
+
+🧲 1. position: fixed
+Stays in one place on the screen even if you scroll.
+💡 Think: Mobile phone notification bar — it never moves.
+Example: -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>position fixed vs sticky</title>
+    <style>
+        .fixed-box {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background-color: lightcoral;
+            padding: 10px;
+            border: 2px solid #000;
+        }
+
+        .content {
+            height: 2000px;
+            /* Just to enable scrolling */
+            background: linear-gradient(white, lightgray);
+            padding: 20px;
+            font-weight: bold;
+            font-size: 18px;
+            border: #000 solid 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="fixed-box">Fixed Box</div>
+    <div class="content">
+        Scroll down to see the fixed box stay in place.
+    </div>
+</body>
+
+</html>
+<!-- 
+🧲 2. position: sticky
+
+Sticks only when scrolling reaches a certain point.
+
+💡 Think: A paper that stays normal but sticks to top when you scroll.
+Example: -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>position sticky example</title>
+    <style>
+        .sticky-box {
+            position: sticky;
+            top: 0;
+            background-color: lightseagreen;
+            padding: 10px;
+            border: 2px solid #000;
+        }
+
+        .content {
+            height: 2000px;
+            /* Just to enable scrolling */
+            background: linear-gradient(white, lightgray);
+            padding: 20px;
+            font-weight: bold;
+            font-size: 18px;
+            border: #000 solid 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="sticky-box">Sticky Box</div>
+    <div class="content">
+        Scroll down to see the sticky box stick to the top.
+    </div>
+</body>
+</html>
