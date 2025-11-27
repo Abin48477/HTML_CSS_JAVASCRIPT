@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Css Animation Project</title>
+  <style>
+    /* Global styling */
+    body {
+      font-family:Arial, Helvetica, sans-serif;
+      background:#f3f3f3;
+      padding:40px;
+      line-height: 1.6;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom:30px;
+
+    }
+    .container {
+      max-width: 800px;
+      margin:auto;
+      background:white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow:0 0 20px rgba(0,0,0,0.1);
+    }
+  /* ------------------------------------ */
+  /* 1.FADE IN ANIMATION                  */
+  /* ------------------------------------ */
+  @keyframes fadeIn {
+    from{ opacity:0;}
+    to{ opacity:1;}
+  }
+.fade-box {
+  background: #4caf50;
+  color:white;
+  padding:20px;
+  margin-bottom: 20px;
+  border-radius:10px;
+  animation:fadeIn 1.2s ease forwards;
+
+}
+/* ------------------------------------- */
+/* 2.SLIDE UP ANIMATION */
+/* ------------------------------------- */
+@keyframes slideUp {
+  from{
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform:translateY();
+
+  }
+}
+.slide-box {
+  background:#2196f3;
+  color:white;
+  padding:20px;
+  margin-bottom:20px;
+  border-radius: 12px;
+  animation: slideUp 0.8s ease-out forwards;
+}
+/* 3.PLUSE BUTTOM ANIMATION */
+@keyframes pulse {
+  0% { transform:scale(1);}
+  50% { transform:scale(1.08);}
+  100% {transform:scale(1);}
+}
+.pluse-btn {
+  background:#ff5722;
+  color:white;
+  border:none;
+  padding:12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size:18px;
+  animation:pulse 1.6s ease-in-out infinite;
+  margin-bottom:20px;
+}
+/* 4.CONTINUOUS MOVING BOX */
+
+@keyframes moveBox {
+  from { transform:translateX(0);}
+  to {transform:translateX(200px);}
+
+}
+.moving-box {
+  background: #9c27b0;
+  height:40px;
+  width:80px;
+  border-radius:6px;
+  animation: moveBox 2s linear infinite alternate;
+}
+  </style>
+</head>
+<body>
+  <div class="container">
+<h1>Animation Project</h1>
+
+<!-- Fade In Box -->
+<div class="fade-box">
+  <h2>Fade In Animation</h2>
+  <p>This box smoothly appears using opacity animation.</p>
+</div>
+<!-- Slide Up Box -->
+ <div class="slide-box">
+  <h2>Slide Up Animation</h2>
+  <p>This element slides up when the page loads.</p>
+
+ </div>
+ <!-- Pluse Button -->
+  <button class="pluse-btn">Pulsing Button</button>
+
+<!-- Moving Box -->
+  <div class="moving-box"></div>
+
+  </div>
+</body>
+</html>
