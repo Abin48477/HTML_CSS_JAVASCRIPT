@@ -1,122 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Css Animation Project</title>
-  <style>
-    /* Global styling */
-    body {
-      font-family:Arial, Helvetica, sans-serif;
-      background:#f3f3f3;
-      padding:40px;
-      line-height: 1.6;
-    }
-    h1 {
-      text-align: center;
-      margin-bottom:30px;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Animation Project</title>
 
-    }
-    .container {
-      max-width: 800px;
-      margin:auto;
-      background:white;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow:0 0 20px rgba(0,0,0,0.1);
-    }
-  /* ------------------------------------ */
-  /* 1.FADE IN ANIMATION                  */
-  /* ------------------------------------ */
-  @keyframes fadeIn {
-    from{ opacity:0;}
-    to{ opacity:1;}
-  }
-.fade-box {
-  background: #4caf50;
-  color:white;
-  padding:20px;
-  margin-bottom: 20px;
-  border-radius:10px;
-  animation:fadeIn 1.2s ease forwards;
+    <style>
+        /* ------------------------------------
+           Global page styling
+           ------------------------------------ */
+        body {
+            font-family: Arial, sans-serif;           /* Simple, clean font for text */
+            background: #f0f2f5;                      /* Soft light background color */
+            padding: 40px;                            /* Space around the main container */
+            line-height: 1.6;                         /* Comfortable line spacing for text */
+        }
 
-}
-/* ------------------------------------- */
-/* 2.SLIDE UP ANIMATION */
-/* ------------------------------------- */
-@keyframes slideUp {
-  from{
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform:translateY();
+        h1 {
+            text-align: center;                       /* Center the main heading */
+            margin-bottom: 30px;                      /* Space below the heading */
+        }
 
-  }
-}
-.slide-box {
-  background:#2196f3;
-  color:white;
-  padding:20px;
-  margin-bottom:20px;
-  border-radius: 12px;
-  animation: slideUp 0.8s ease-out forwards;
-}
-/* 3.PLUSE BUTTOM ANIMATION */
-@keyframes pulse {
-  0% { transform:scale(1);}
-  50% { transform:scale(1.08);}
-  100% {transform:scale(1);}
-}
-.pluse-btn {
-  background:#ff5722;
-  color:white;
-  border:none;
-  padding:12px 24px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size:18px;
-  animation:pulse 1.6s ease-in-out infinite;
-  margin-bottom:20px;
-}
-/* 4.CONTINUOUS MOVING BOX */
+        .container {
+            max-width: 800px;                         /* Limit width for better readability */
+            margin: auto;                             /* Center the container horizontally */
+            background: #ffffff;                      /* White background for content area */
+            padding: 30px;                            /* Inner spacing around content */
+            border-radius: 12px;                      /* Rounded corners for a smooth look */
+            box-shadow: 0 0 20px rgba(0,0,0,0.08);    /* Soft shadow for depth effect */
+        }
 
-@keyframes moveBox {
-  from { transform:translateX(0);}
-  to {transform:translateX(200px);}
+        /* ------------------------------------
+           1. FADE IN ANIMATION
+           - Element starts invisible and becomes visible
+           ------------------------------------ */
 
-}
-.moving-box {
-  background: #9c27b0;
-  height:40px;
-  width:80px;
-  border-radius:6px;
-  animation: moveBox 2s linear infinite alternate;
-}
-  </style>
+        /* Keyframes define the animation steps */
+        @keyframes fadeIn {
+            from { opacity: 0; }                      /* Start fully transparent */
+            to   { opacity: 1; }                      /* End fully visible */
+        }
+
+        .fade-box {
+            background: #43a047;                      /* Green shade for fade box */
+            color: #ffffff;                           /* White text for contrast */
+            padding: 20px;                            /* Inner spacing */
+            margin-bottom: 20px;                      /* Space below the box */
+            border-radius: 10px;                      /* Slightly rounded corners */
+            animation: fadeIn 1.2s ease forwards;     /* Apply fade-in animation once */
+        }
+
+        /* ------------------------------------
+           2. SLIDE UP ANIMATION
+           - Element moves up into position while appearing
+           ------------------------------------ */
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;                           /* Start invisible */
+                transform: translateY(40px);          /* Start slightly lower on the Y axis */
+            }
+            to {
+                opacity: 1;                           /* End fully visible */
+                transform: translateY(0);             /* End at normal position */
+            }
+        }
+
+        .slide-box {
+            background: #1e88e5;                      /* Blue shade for slide box */
+            color: #ffffff;                           /* White text for readability */
+            padding: 20px;                            /* Inner spacing */
+            margin-bottom: 20px;                      /* Space below the box */
+            border-radius: 10px;                      /* Rounded corners */
+            animation: slideUp 0.8s ease-out forwards;/* Apply slide-up animation once */
+        }
+
+        /* ------------------------------------
+           3. PULSE BUTTON ANIMATION
+           - Button grows and shrinks continuously
+           ------------------------------------ */
+
+        @keyframes pulse {
+            0%   { transform: scale(1); }             /* Normal size at start */
+            50%  { transform: scale(1.08); }          /* Slightly larger in the middle */
+            100% { transform: scale(1); }             /* Back to normal size */
+        }
+
+        .pulse-btn {
+            background: #fb8c00;                      /* Warm orange color for button */
+            color: #ffffff;                           /* White text on button */
+            border: none;                             /* Remove default button border */
+            padding: 12px 24px;                       /* Vertical and horizontal padding */
+            border-radius: 8px;                       /* Smooth rounded edges */
+            cursor: pointer;                          /* Show pointer cursor on hover */
+            font-size: 18px;                          /* Larger text for emphasis */
+            animation: pulse 1.6s ease-in-out infinite;/* Continuous pulsing effect */
+            margin-bottom: 20px;                      /* Space below the button */
+            display: inline-block;                    /* Keep button size to its content */
+        }
+
+        /* ------------------------------------
+           4. CONTINUOUS MOVING BOX
+           - Box moves left to right and back
+           ------------------------------------ */
+
+        @keyframes moveBox {
+            from { transform: translateX(0); }        /* Start from initial position */
+            to   { transform: translateX(200px); }    /* Move 200px to the right */
+        }
+
+        .moving-box {
+            background: #8e24aa;                      /* Purple shade for moving box */
+            height: 40px;                             /* Box height */
+            width: 80px;                              /* Box width */
+            border-radius: 6px;                       /* Slightly rounded edges */
+            animation: moveBox 2s linear infinite alternate;
+                                                      /* Move back and forth forever */
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-<h1>Animation Project</h1>
 
-<!-- Fade In Box -->
-<div class="fade-box">
-  <h2>Fade In Animation</h2>
-  <p>This box smoothly appears using opacity animation.</p>
-</div>
-<!-- Slide Up Box -->
- <div class="slide-box">
-  <h2>Slide Up Animation</h2>
-  <p>This element slides up when the page loads.</p>
+    <div class="container">
+        <!-- Main title of the page -->
+        <h1>CSS Animation Project</h1>
 
- </div>
- <!-- Pluse Button -->
-  <button class="pluse-btn">Pulsing Button</button>
+        <!-- Fade In Box: demonstrates simple opacity animation -->
+        <div class="fade-box">
+            <h2>Fade In Animation</h2>
+            <p>This box smoothly appears using opacity animation.</p>
+        </div>
 
-<!-- Moving Box -->
-  <div class="moving-box"></div>
+        <!-- Slide Up Box: demonstrates movement and opacity together -->
+        <div class="slide-box">
+            <h2>Slide Up Animation</h2>
+            <p>This element slides up when the page loads.</p>
+        </div>
 
-  </div>
+        <!-- Pulse Button: attention-grabbing animated button -->
+        <button class="pulse-btn">Pulsing Button</button>
+
+        <!-- Moving Box: continuous horizontal motion example -->
+        <div class="moving-box"></div>
+
+    </div>
+
 </body>
 </html>
