@@ -2,9 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <!-- Make page look good on mobile and desktop -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Glass UI Card</title>
+
   <style>
+    /* Reset basic styles and set common font */
     * {
       margin: 0;
       padding: 0;
@@ -12,6 +15,7 @@
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
     }
 
+    /* Full screen center layout + dark gradient background */
     body {
       min-height: 100vh;
       display: flex;
@@ -22,7 +26,7 @@
       overflow: hidden;
     }
 
-    /* soft floating blobs in background */
+    /* Colorful blurred circles behind the card */
     .blob {
       position: fixed;
       width: 420px;
@@ -30,23 +34,26 @@
       border-radius: 50%;
       filter: blur(80px);
       opacity: 0.8;
-      z-index: -2;
-      animation: float 12s ease-in-out infinite alternate;
+      z-index: -2;               /* Keep blobs behind everything */
+      animation: float 12s ease-in-out infinite alternate; /* Slow floating animation */
     }
 
+    /* First blob (blue, top-left) */
     .blob:nth-child(1) {
       background: #4c6ef5;
       top: -80px;
       left: -60px;
     }
 
+    /* Second blob (pink, bottom-right) */
     .blob:nth-child(2) {
       background: #e859ff;
       bottom: -120px;
       right: -40px;
-      animation-delay: -4s;
+      animation-delay: -4s;      /* Start a bit earlier for variety */
     }
 
+    /* Third blob (green, center) */
     .blob:nth-child(3) {
       background: #20c997;
       top: 50%;
@@ -56,12 +63,14 @@
       animation-delay: -7s;
     }
 
+    /* Simple up/down + slight zoom animation for blobs */
     @keyframes float {
       to {
         transform: translate3d(20px, -30px, 0) scale(1.05);
       }
     }
 
+    /* Wrapper to center the card */
     .container {
       display: flex;
       justify-content: center;
@@ -69,19 +78,21 @@
       padding: 20px;
     }
 
+    /* Main glass card box */
     .glass-card {
       position: relative;
-      width: min(380px, 90vw);
+      width: min(380px, 90vw);   /* Responsive width: max 380px, otherwise 90% of screen */
       padding: 28px 26px 26px;
       border-radius: 24px;
 
-      background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0.06))
-                  border-box;
+      /* Light gradient + transparent background for glass effect */
+      background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.24), rgba(255, 255, 255, 0.06)) border-box;
       border: 1px solid rgba(255, 255, 255, 0.24);
       box-shadow:
-        0 18px 45px rgba(15, 23, 42, 0.75),
-        0 0 0 1px rgba(255, 255, 255, 0.04);
+        0 18px 45px rgba(15, 23, 42, 0.75),      /* Big soft shadow */
+        0 0 0 1px rgba(255, 255, 255, 0.04);     /* Thin outer line */
 
+      /* Blur background behind the card (main glassmorphism) */
       backdrop-filter: blur(22px) saturate(130%);
       -webkit-backdrop-filter: blur(22px) saturate(130%);
 
@@ -91,19 +102,25 @@
       transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
     }
 
-    /* subtle light streak */
+    /* Bright light streak on top of card */
     .glass-card::before {
       content: "";
       position: absolute;
       inset: -40%;
-      background: conic-gradient(from 200deg, rgba(255, 255, 255, 0.2), transparent, rgba(255, 255, 255, 0.06), transparent);
+      background: conic-gradient(
+        from 200deg,
+        rgba(255, 255, 255, 0.2),
+        transparent,
+        rgba(255, 255, 255, 0.06),
+        transparent
+      );
       opacity: 0.6;
-      mix-blend-mode: screen;
+      mix-blend-mode: screen;    /* Blend nicely with card */
       transform: translate3d(-40%, -10%, 0) rotate(8deg);
       pointer-events: none;
     }
 
-    /* faint border highlight */
+    /* Extra border highlight that appears on hover */
     .glass-card::after {
       content: "";
       position: absolute;
@@ -115,6 +132,7 @@
       transition: opacity 0.4s ease;
     }
 
+    /* Lift card on hover */
     .glass-card:hover {
       transform: translateY(-6px) scale(1.01);
       box-shadow:
@@ -123,10 +141,12 @@
       border-color: rgba(255, 255, 255, 0.4);
     }
 
+    /* Show highlight border when hovering */
     .glass-card:hover::after {
       opacity: 0.38;
     }
 
+    /* Small pill badge at the top of the card */
     .badge {
       display: inline-flex;
       align-items: center;
@@ -143,6 +163,7 @@
       backdrop-filter: blur(10px);
     }
 
+    /* Green dot inside badge */
     .badge-dot {
       width: 7px;
       height: 7px;
@@ -151,18 +172,21 @@
       box-shadow: 0 0 0 6px rgba(81, 207, 102, 0.25);
     }
 
+    /* Main heading text */
     .glass-card h1 {
       font-size: 26px;
       line-height: 1.25;
       margin-bottom: 6px;
     }
 
+    /* Subtitle under heading */
     .subtitle {
       font-size: 14px;
       color: #cbd5f5;
       margin-bottom: 18px;
     }
 
+    /* Row of small info text below subtitle */
     .meta {
       display: flex;
       flex-wrap: wrap;
@@ -172,6 +196,7 @@
       margin-bottom: 18px;
     }
 
+    /* Each small info item */
     .meta span {
       display: inline-flex;
       align-items: center;
@@ -179,6 +204,7 @@
       opacity: 0.92;
     }
 
+    /* Small colored dot for meta items */
     .meta-dot {
       width: 6px;
       height: 6px;
@@ -186,6 +212,7 @@
       background: linear-gradient(135deg, #4dabf7, #e599f7);
     }
 
+    /* Buttons row */
     .actions {
       display: flex;
       gap: 10px;
@@ -193,6 +220,7 @@
       margin-top: 4px;
     }
 
+    /* Main (primary) button */
     .btn-primary {
       padding: 9px 18px;
       border-radius: 999px;
@@ -212,6 +240,7 @@
       white-space: nowrap;
     }
 
+    /* Slight lift on primary button hover */
     .btn-primary:hover {
       transform: translateY(-1px);
       box-shadow:
@@ -220,6 +249,7 @@
       filter: brightness(1.05);
     }
 
+    /* Outline (secondary) button */
     .btn-secondary {
       background: transparent;
       border-radius: 999px;
@@ -235,17 +265,20 @@
       transition: border-color 0.25s ease, background-color 0.25s ease, color 0.25s ease;
     }
 
+    /* Darker background on secondary button hover */
     .btn-secondary:hover {
       background-color: rgba(15, 23, 42, 0.65);
       border-color: rgba(226, 232, 240, 0.9);
       color: #f9fafb;
     }
 
+    /* Small arrow icon inside secondary button */
     .btn-secondary span {
       font-size: 14px;
       transform: translateY(0.5px);
     }
 
+    /* Make card slightly smaller on small screens */
     @media (max-width: 480px) {
       .glass-card {
         padding: 24px 20px 20px;
@@ -263,26 +296,33 @@
   </style>
 </head>
 <body>
-  <!-- glowing background blobs -->
+  <!-- Three blurred color blobs in the background -->
   <div class="blob"></div>
   <div class="blob"></div>
   <div class="blob"></div>
 
+  <!-- Centered glass card container -->
   <div class="container">
     <div class="glass-card">
+      <!-- Small pill badge on top -->
       <div class="badge">
         <span class="badge-dot"></span>
         <span>Welcome back</span>
       </div>
 
+      <!-- Main title text -->
       <h1>Hello, Abin 👋</h1>
+
+      <!-- Short description text -->
       <p class="subtitle">A clean glassmorphism card with smooth glow, depth, and soft hover animation.</p>
 
+      <!-- Extra info row -->
       <div class="meta">
         <span><span class="meta-dot"></span> Frontend Playground</span>
         <span><span class="meta-dot"></span> Glassmorphism UI</span>
       </div>
 
+      <!-- Buttons -->
       <div class="actions">
         <button class="btn-primary">Explore</button>
         <button class="btn-secondary">
