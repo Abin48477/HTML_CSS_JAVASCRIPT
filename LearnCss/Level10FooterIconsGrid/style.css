@@ -1,62 +1,136 @@
-/* Footer */
-.footer {
-    background: #1e1e1e;
-    color: white;
-    padding: 50px 20px;
+/* 1. Basic Reset & Variables */
+:root {
+    --bg-color: #111827;       /* Very dark blue/gray */
+    --text-color: #9ca3af;     /* Muted gray text */
+    --white: #ffffff;          /* Headings */
+    --accent: #3b82f6;         /* Bright Blue for hovers */
+    --grid-gap: 3rem;
 }
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* 2. Footer Container */
+.footer {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    padding: 4rem 2rem 1.5rem; /* Top, Sides, Bottom */
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* 3. The Grid Layout */
 .footer-grid {
     display: grid;
+    /* This magic line creates responsive columns automatically */
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-    max-width: 1100px;
-    margin: auto;
+    gap: var(--grid-gap);
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.footer-section h3,
+/* 4. Section Styling */
+.footer-section h3 {
+    color: var(--white);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
 .footer-section h4 {
-    margin-bottom: 10px;
+    color: var(--white);
+    font-size: 1.1rem;
+    margin-bottom: 1.2rem;
+    position: relative;
+}
+
+/* Optional: Add a small decorative line under headings */
+.footer-section h4::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 40px;
+    height: 3px;
+    background-color: var(--accent);
+    border-radius: 2px;
 }
 
 .footer-section p {
-    margin-bottom: 10px;
-    color: #ddd;
+    margin-bottom: 1rem;
 }
 
+/* 5. Link Styling */
 .footer-section ul {
     list-style: none;
-    padding: 0;
 }
 
 .footer-section ul li {
-    margin-bottom: 8px;
-    cursor: pointer;
-    transition: .3s;
-    color: #ccc;
+    margin-bottom: 0.8rem;
 }
 
-.footer-section ul li:hover {
-    color: white;
-    transform: translateX(5px);
+.footer-section ul li a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s ease, padding-left 0.3s ease;
 }
 
-/* Social Icons */
-.social i {
-    font-size: 22px;
-    margin-right: 15px;
-    cursor: pointer;
-    transition: .3s;
+/* Hover Effect: Color change + small slide right */
+.footer-section ul li a:hover {
+    color: var(--accent);
+    padding-left: 5px;
 }
 
-.social i:hover {
-    transform: scale(1.2);
-    color: #4c6ef5;
+/* Contact Icons specific styling */
+.footer-section i {
+    margin-right: 10px;
+    color: var(--accent);
 }
 
-/* Copyright */
-footer p {
+/* 6. Social Media Icons */
+.social {
+    display: flex;
+    gap: 15px;
+    margin-top: 1.5rem;
+}
+
+.social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.1); /* Glassmorphism effect */
+    color: var(--white);
+    border-radius: 50%; /* Makes them circles */
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social a:hover {
+    background-color: var(--accent);
+    transform: translateY(-5px); /* Moves up slightly on hover */
+}
+
+/* 7. Copyright Bar */
+.copyright {
     text-align: center;
-    margin-top: 40px;
-    color: #aaa;
-    font-size: 14px;
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.85rem;
+}
+
+/* 8. Mobile Tweaks */
+@media (max-width: 600px) {
+    .footer {
+        padding: 3rem 1.5rem;
+    }
+    .footer-grid {
+        gap: 2rem;
+    }
 }
