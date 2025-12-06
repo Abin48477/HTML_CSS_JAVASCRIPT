@@ -3,3 +3,19 @@
     margin:0;
     box-sizing: border-box;
 }
+navbar {
+    background-color: #343a40;
+}
+.nav-link {
+    color:black;
+    font-size:1rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+
+}
+.nav-link:hover {
+    color: white;
+    text-decoration: none;
+    color:black
+}
