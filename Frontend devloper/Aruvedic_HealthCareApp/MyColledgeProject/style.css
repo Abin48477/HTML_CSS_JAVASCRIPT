@@ -222,3 +222,22 @@ footer {
         margin: 5px 0;
     }
 }
+#reset-btn {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 5px 15px rgba(255, 112, 67, 0.4);
+    font-weight: 600;
+    margin-left: 20px;
+}
+#reset-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(255, 112, 67, 0.5);
+}
+
+/* Additional Styles for Reset Button */

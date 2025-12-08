@@ -136,3 +136,16 @@ function findRemedy() {
         resultP.textContent = "Sorry, no specific remedy found for this symptom. Try simpler terms like 'cough' or 'headache'.";
     }
 }
+
+function resetQuiz() {
+    // Reset scores
+    scores = {
+        vata: 0,
+        pitta: 0,
+        kapha: 0
+    };
+    document.getElementById('result').textContent = "";
+}
+    // Reset button styles
+    const buttons = document.querySelectorAll('.question-section button');
+    buttons.forEach(btn => btn.classList.remove('selected'));  
