@@ -4,29 +4,25 @@ include 'db_connect.php';
 
 $message = "";
 
-if (isset($_GET['registration']) && $_GET['registration'] == 'success') {
-    $message = "<span style='color:green'>Registration successful! Please login.</span>";
-}
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $fullname = $conn->real_escape_string($_POST['fullname']);
     $email = $conn->real_escape_string($_POST['email']);
-    $password = $_POST['password'];
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-    $sql = "SELECT * FROM users WHERE email='$email'";
-    $result = $conn->query($sql);
+    $checkEmail = "SELECT * FROM users WHERE email='$email'";
+    $result = $conn->query($checkEmail);
 
-    if ($result->num_rows == 1) {
-        $row = $result->fetch_assoc();
-        if (password_verify($password, $row['password'])) {
-            $_SESSION['user_id'] = $row['id'];
-            $_SESSION['fullname'] = $row['fullname'];
-            header("Location: index.php");
+    if ($result->num_rows > 0) {
+        $message = "Email already exists! Please login.";
+    } else {
+        $sql = "INSERT INTO users (fullname, email, password) VALUES ('$fullname', '$email', '$password')";
+
+        if ($conn->query($sql) === TRUE) {
+            header("Location: login.php?registration=success");
             exit();
         } else {
-            $message = "Invalid password.";
+            $message = "Error: " . $sql . "<br>" . $conn->error;
         }
-    } else {
-        $message = "No account found with that email.";
     }
 }
 ?>
@@ -36,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Ayurvedic Health Portal</title>
+    <title>Sign Up - Ayurvedic Health Portal</title>
     <link href="style.css" rel="stylesheet" />
     <style>
         .auth-container {
@@ -82,16 +78,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
     <div class="auth-container">
-        <h2>Login</h2>
+        <h2>Create Account</h2>
         <?php if ($message) {
             echo "<p class='error'>$message</p>";
         } ?>
-        <form action="login.php" method="POST">
+        <form action="signup.php" method="POST">
+            <input type="text" name="fullname" placeholder="Full Name" required>
             <input type="email" name="email" placeholder="Email Address" required>
             <input type="password" name="password" placeholder="Password" required>
-            <button type="submit">Login</button>
+            <button type="submit">Sign Up</button>
         </form>
-        <p>Don't have an account? <a href="signup.php" style="color: var(--secondary-color);">Sign up here</a></p>
+        <p>Already have an account? <a href="login.php" style="color: var(--secondary-color);">Login here</a></p>
     </div>
 </body>
 
