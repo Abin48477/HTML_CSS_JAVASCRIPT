@@ -1,0 +1,120 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", system-ui, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background (image + gradient overlay) */
+.bg {
+  position: fixed;
+  inset: 0;
+  background:
+    linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(30, 64, 175, 0.7)),
+    url("your-background.jpg") center/cover no-repeat;
+  z-index: -1;
+}
+
+/* Glass card */
+.wrapper {
+  width: 360px;
+  padding: 32px 28px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
+  color: #fff;
+}
+
+.wrapper h2 {
+  text-align: center;
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+/* Inputs with floating labels */
+.input-field {
+  position: relative;
+  margin-bottom: 22px;
+}
+
+.input-field input {
+  width: 100%;
+  padding: 12px 10px;
+  border-radius: 8px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #fff;
+  outline: none;
+  font-size: 14px;
+}
+
+.input-field label {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+  pointer-events: none;
+  transition: 0.2s ease;
+}
+
+/* Float label on focus or when not empty */
+.input-field input:focus + label,
+.input-field input:valid + label {
+  top: 2px;
+  font-size: 11px;
+  color: #a5b4fc;
+}
+
+/* Button */
+.btn {
+  width: 100%;
+  padding: 11px 0;
+  border-radius: 999px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  color: #0f172a;
+  background: linear-gradient(135deg, #a5b4fc, #38bdf8);
+  box-shadow: 0 10px 25px rgba(56, 189, 248, 0.45);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 30px rgba(56, 189, 248, 0.6);
+}
+
+.btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 8px 18px rgba(56, 189, 248, 0.4);
+}
+.wrapper {
+  /* existing styles... */
+  opacity: 0;
+  transform: translateY(25px) scale(0.97);
+  animation: fadeUp 0.6s ease-out forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
