@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AyurVeda Login</title>
+    <link rel="stylesheet" href="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            background: 
+                linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><radialGradient id="g1" cx="20%" cy="20%"><stop offset="0%" stop-color="%234ade80"/><stop offset="50%" stop-color="%2322c55e"/><stop offset="100%" stop-color="%2316a34a"/></radialGradient><radialGradient id="g2" cx="80%" cy="80%"><stop offset="0%" stop-color="%234ade80"/><stop offset="50%" stop-color="%2322c55e"/><stop offset="100%" stop-color="%2316a34a"/></radialGradient></defs><rect width="1200" height="800" fill="%23e0f2fe"/><circle cx="200" cy="200" r="150" fill="url(%23g1)" opacity="0.6"/><circle cx="1000" cy="600" r="200" fill="url(%23g2)" opacity="0.4"/><path d="M0 400 Q300 200 600 400 T1200 400" stroke="%234ade80" stroke-width="4" fill="none" opacity="0.3"/><rect x="100" y="500" width="200" height="300" rx="20" fill="%2322c55e" opacity="0.2"/><rect x="900" y="450" width="250" height="350" rx="25" fill="%2316a34a" opacity="0.3"/></svg>') center/cover no-repeat fixed;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(5px);
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(25px);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 40px;
+            max-width: 420px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            opacity: 0;
+            z-index: 1001;
+            transition: all 0.3s ease;
+        }
+
+        .modal.active {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.2);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background: rgba(255,255,255,0.3);
+            transform: scale(1.1);
+        }
+
+        .login-card, .register-card {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(25px);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            padding: 40px;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+            animation: slideInUp 0.8s ease-out;
+            position: relative;
+        }
+
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo h1 {
+            color: white;
+            font-size: 2.2rem;
+            font-weight: 700;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            margin-top: 10px;
+        }
+
+        .logo ion-icon {
+            font-size: 2.8rem;
+            color: #4ade80;
+            text-shadow: 0 4px 15px rgba(74, 222, 128, 0.4);
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 24px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 16px 20px 16px 50px;
+            background: rgba(255, 255, 255, 0.18);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 16px;
+            color: white;
+            font-size: 16px;
+            backdrop-filter: blur(12px);
+            transition: all 0.3s ease;
+        }
+
+        .input-group input::placeholder {
+            color: rgba(255, 255, 255, 0.75);
+        }
+
+        .input-group input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 0 20px rgba(74, 222, 128, 0.3);
+        }
+
+        .input-group ion-icon {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 20px;
+            z-index: 1;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 16px;
+            border: none;
+            border-radius: 16px;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .login-btn {
+            background: linear-gradient(135deg, #4ade80, #22c55e);
+        }
+
+        .register-btn {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(74, 222, 128, 0.4);
+        }
+
+        .divider {
+            text-align: center;
+            margin: 24px 0;
+            position: relative;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+        }
+
+        .divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .divider span {
+            background: rgba(255, 255, 255, 0.12);
+            padding: 0 20px;
+            position: relative;
+        }
+
+        .social-buttons {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .social-btn {
+            width: 52px;
+            height: 52px;
+            border-radius: 16px;
+            border: none;
+            cursor: pointer;
+            font-size: 22px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .google { background: #fff; color: #db4437; }
+        .github { background: #24292e; color: #fff; }
+        .facebook { background: #1877f2; color: #fff; }
+        .instagram { background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); color: #fff; }
+        .linkedin { background: #0a66c2; color: #fff; }
+
+        .social-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .link-btn {
+            background: none;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: rgba(255, 255, 255, 0.9);
+            padding: 12px 24px;
+            border-radius: 12px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .link-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.5);
+            color: white;
+        }
+
+        @media (max-width: 480px) {
+            body { padding: 10px; }
+            .login-card, .register-card, .modal { padding: 30px 25px; }
+            .social-btn { width: 48px; height: 48px; font-size: 20px; }
+            .social-buttons { gap: 8px; }
+            .logo h1 { font-size: 1.8rem; }
+            .logo ion-icon { font-size: 2.4rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Card -->
+    <div class="login-card" id="loginCard">
+        <div class="logo">
+            <ion-icon name="leaf-outline"></ion-icon>
+            <h1>AyurVeda</h1>
+        </div>
+        
+        <form id="loginForm">
+            <div class="input-group">
+                <ion-icon name="mail-outline"></ion-icon>
+                <input type="email" placeholder="Email" required>
+            </div>
+            <div class="input-group">
+                <ion-icon name="lock-closed-outline"></ion-icon>
+                <input type="password" id="loginPassword" placeholder="Password" required>
+            </div>
+            <button type="submit" class="btn login-btn">
+                <ion-icon name="log-in-outline"></ion-icon>
+                Sign In
+            </button>
+        </form>
+        
+        <div class="divider">
+            <span>Or continue with</span>
+        </div>
+        
+        <div class="social-buttons">
+            <button class="social-btn google" data-platform="google"><ion-icon name="logo-google"></ion-icon></button>
+            <button class="social-btn github" data-platform="github"><ion-icon name="logo-github"></ion-icon></button>
+            <button class="social-btn facebook" data-platform="facebook"><ion-icon name="logo-facebook"></ion-icon></button>
+            <button class="social-btn instagram" data-platform="instagram"><ion-icon name="logo-instagram"></ion-icon></button>
+            <button class="social-btn linkedin" data-platform="linkedin"><ion-icon name="logo-linkedin"></ion-icon></button>
+        </div>
+        
+        <div style="text-align: center; margin-top: 24px; gap: 12px; display: flex; flex-direction: column;">
+            <a href="#" class="link-btn" id="forgotBtn">Forgot Password?</a>
+            <a href="#" class="link-btn" id="registerBtn">Create New Account</a>
+        </div>
+    </div>
+
+    <!-- Forgot Password Modal -->
+    <div class="overlay" id="forgotOverlay"></div>
+    <div class="modal" id="forgotModal">
+        <button class="close-btn" id="closeForgot"><ion-icon name="close-outline"></ion-icon></button>
+        <div class="logo">
+            <ion-icon name="key-outline"></ion-icon>
+            <h1>Reset Password</h1>
+        </div>
+        <form id="forgotForm">
+            <div class="input-group">
+                <ion-icon name="mail-outline"></ion-icon>
+                <input type="email" placeholder="Enter your email" required>
+            </div>
+            <button type="submit" class="btn login-btn">
+                <ion-icon name="send-outline"></ion-icon>
+                Send Reset Link
+            </button>
+        </form>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="overlay" id="registerOverlay"></div>
+    <div class="modal" id="registerModal">
+        <button class="close-btn" id="closeRegister"><ion-icon name="close-outline"></ion-icon></button>
+        <div class="logo">
+            <ion-icon name="person-add-outline"></ion-icon>
+            <h1>Create Account</h1>
+        </div>
+        <form id="registerForm">
+            <div class="input-group">
+                <ion-icon name="person-outline"></ion-icon>
+                <input type="text" placeholder="Full Name" required>
+            </div>
+            <div class="input-group">
+                <ion-icon name="mail-outline"></ion-icon>
+                <input type="email" placeholder="Email" required>
+            </div>
+            <div class="input-group">
+                <ion-icon name="lock-closed-outline"></ion-icon>
+                <input type="password" id="registerPassword" placeholder="Password" required>
+            </div>
+            <button type="submit" class="btn register-btn">
+                <ion-icon name="checkmark-circle-outline"></ion-icon>
+                Create Account
+            </button>
+        </form>
+        <div style="text-align: center; margin-top: 20px;">
+            <a href="#" class="link-btn" id="backToLogin">Back to Login</a>
+        </div>
+    </div>
+
+    <script>
+        // Toggle modals
+        function toggleModal(modalId, overlayId) {
+            const modal = document.getElementById(modalId);
+            const overlay = document.getElementById(overlayId);
+            modal.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        // Forgot Password
+        document.getElementById('forgotBtn').onclick = () => toggleModal('forgotModal', 'forgotOverlay');
+        document.getElementById('closeForgot').onclick = () => toggleModal('forgotModal', 'forgotOverlay');
+        document.getElementById('forgotOverlay').onclick = () => toggleModal('forgotModal', 'forgotOverlay');
+
+        // Register
+        document.getElementById('registerBtn').onclick = (e) => {
+            e.preventDefault();
+            toggleModal('registerModal', 'registerOverlay');
+        };
+        document.getElementById('closeRegister').onclick = () => toggleModal('registerModal', 'registerOverlay');
+        document.getElementById('registerOverlay').onclick = () => toggleModal('registerModal', 'registerOverlay');
+        document.getElementById('backToLogin').onclick = (e) => {
+            e.preventDefault();
+            toggleModal('registerModal', 'registerOverlay');
+        };
+
+        // Form handlers
+        document.getElementById('loginForm').onsubmit = (e) => {
+            e.preventDefault();
+            alert('Login successful! Connect to backend.');
+        };
+
+        document.getElementById('registerForm').onsubmit = (e) => {
+            e.preventDefault();
+            const password = document.getElementById('registerPassword').value;
+            if (password.length >= 6) {
+                alert('Account created! Connect to backend.');
+            } else {
+                alert('Password must be 6+ characters');
+            }
+        };
+
+        document.getElementById('forgotForm').onsubmit = (e) => {
+            e.preventDefault();
+            alert('Reset link sent! Connect to backend.');
+        };
+
+        // Social buttons
+        document.querySelectorAll('.social-btn').forEach(btn => {
+            btn.onclick = () => {
+                const platform = btn.dataset.platform;
+                alert(`${platform.toUpperCase()} OAuth clicked!`);
+            };
+        });
+    </script>
+</body>
+</html>
