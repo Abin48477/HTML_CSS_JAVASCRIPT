@@ -1,1 +1,0 @@
-CREATE TABLE student_tbl (
