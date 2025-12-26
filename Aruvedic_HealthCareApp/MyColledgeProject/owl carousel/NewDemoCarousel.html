@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tilted Product Carousel</title>
+
+  <!-- Owl Carousel CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: #e5ffe5;
+    }
+
+    .carousel-wrapper {
+      max-width: 1100px;
+      margin: 60px auto;
+      padding: 30px 20px 50px;
+      background: #e20303;
+      border-radius: 22px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .section-title {
+      text-align: center;
+      color: #fff;
+      font-size: 28px;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .section-sub {
+      text-align: center;
+      color: #ffeaea;
+      margin-bottom: 25px;
+      font-size: 15px;
+    }
+
+    /* CARD container - essential for 3D context if we were tilting the card container, 
+       but here we tilt the card itself. We'll add perspective to the owl-item */
+    .owl-item {
+      perspective: 1000px;
+    }
+
+    .owl-carousel .item-card {
+      border-radius: 22px;
+      overflow: hidden;
+      background: #fdf3ee;
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+      margin: 18px 8px;
+      padding-bottom: 18px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 360px;
+      transition: 0.6s cubic-bezier(.5, 1.5, .5, 1);
+      /* Default state: slightly smaller and flat for non-active items that haven't been assigned a specific tilt yet */
+      transform: scale(0.9);
+      will-change: transform;
+    }
+
+    .owl-carousel .item-card img {
+      margin-top: 28px;
+      width: 160px;
+      height: 160px;
+      object-fit: contain;
+      transition: 0.5s cubic-bezier(.5, 1.5, .5, 1);
+    }
+
+    .product-name {
+      font-size: 15px;
+      font-weight: 600;
+      padding: 15px 20px 8px;
+      text-align: center;
+      color: #333a3a;
+    }
+
+    .product-price {
+      font-size: 17px;
+      color: #0d7907;
+      font-weight: 700;
+      text-align: center;
+      margin-top: auto;
+      padding-bottom: 10px;
+    }
+
+    /* TILT CLASSES controlled by JS */
+
+    /* Center item: Flat and full scale */
+    .owl-item.center .item-card {
+      transform: rotateY(0deg) scale(1.05);
+      z-index: 10;
+      opacity: 1;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      /* Override transition to be smooth/straight (no wobble/bounce) as it enters center */
+      transition: transform 0.6s ease;
+    }
+
+    /* Left item: Tilts RIGHT (looks like it's facing the center) 
+       RotateY positive values rotate the right side away, left side towards viewer? 
+       Actually: rotateY(deg): positive tilts right edge 'away' (into screen) if looking from front?
+       Let's stick to standard: rotateY(20deg) turns it like a door opening.
+       We want "book open" effect. Left page faces right. Right page faces left.
+    */
+    .owl-item.left-tilt .item-card {
+      /* Tilted to face right -> Right edge is deeper */
+      transform: rotateY(25deg) scale(0.9);
+      opacity: 0.9;
+    }
+
+    .owl-item.right-tilt .item-card {
+      /* Tilted to face left -> Left edge is deeper */
+      transform: rotateY(-25deg) scale(0.9);
+      opacity: 0.9;
+    }
+
+    /* Dots */
+    .owl-dots {
+      margin-top: 14px;
+    }
+
+    .owl-dot span {
+      width: 10px;
+      height: 10px;
+      background: #ffd0d0;
+    }
+
+    .owl-dot.active span {
+      background: #ffffff;
+      transform: scale(1.4);
+    }
+
+    /* Mobile */
+    @media (max-width: 700px) {
+      .carousel-wrapper {
+        padding: 16px 8px 30px;
+      }
+
+      .owl-carousel .item-card {
+        min-height: 260px;
+      }
+
+      .owl-carousel .item-card img {
+        width: 90px;
+        height: 90px;
+        margin-top: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="carousel-wrapper">
+    <h2 class="section-title">Our Products</h2>
+    <p class="section-sub">We have the latest products, it must be exciting for you.</p>
+
+    <div class="owl-carousel owl-theme">
+      <!-- Card 1 -->
+      <div class="item-card">
+        <img src="https://images.pexels.com/photos/3738439/pexels-photo-3738439.jpeg?auto=compress&cs=tinysrgb&w=600"
+          alt="">
+        <div class="product-name">Patanjali GonyIe 1Ltr.</div>
+        <div class="product-price">NRs. 99.00</div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="item-card">
+        <img src="https://images.pexels.com/photos/3738374/pexels-photo-3738374.jpeg?auto=compress&cs=tinysrgb&w=600"
+          alt="">
+        <div class="product-name">Patanjali Saundarya Shower Gel 250ml</div>
+        <div class="product-price">NRs. 250.00</div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="item-card">
+        <img src="https://images.pexels.com/photos/3738365/pexels-photo-3738365.jpeg?auto=compress&cs=tinysrgb&w=600"
+          alt="">
+        <div class="product-name">Patanjali Beauty Cream Advance SPF 15</div>
+        <div class="product-price">NRs. 150.00</div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="item-card">
+        <img src="https://images.pexels.com/photos/3738341/pexels-photo-3738341.jpeg?auto=compress&cs=tinysrgb&w=600"
+          alt="">
+        <div class="product-name">Patanjali Saundarya Aloe Vera Gel 150ml</div>
+        <div class="product-price">NRs. 150.00</div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="item-card">
+        <img src="https://images.pexels.com/photos/3738345/pexels-photo-3738345.jpeg?auto=compress&cs=tinysrgb&w=600"
+          alt="">
+        <div class="product-name">Kesh Kanti Hair Cleaner 200ml</div>
+        <div class="product-price">NRs. 210.00</div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="item-card">
+        <img src="https://images.pexels.com/photos/3738384/pexels-photo-3738384.jpeg?auto=compress&cs=tinysrgb&w=600"
+          alt="">
+        <div class="product-name">Patanjali Honey 500g</div>
+        <div class="product-price">NRs. 450.00</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+  <script>
+    // Initialize Owl Carousel
+    var $owl = $(".owl-carousel");
+
+    $owl.owlCarousel({
+      center: true,
+      loop: true,
+      margin: 20, /* Increased margin slightly for tilt space */
+      nav: true,
+      dots: true,
+      autoplay: true,
+      autoplayTimeout: 3000,
+      smartSpeed: 800,
+      responsive: {
+        0: { items: 1 },
+        700: { items: 3 }
+      },
+      onTranslate: updateClasses,
+      onTranslated: updateClasses,
+      onInitialized: updateClasses
+    });
+
+    $(".owl-nav button.owl-prev").attr("aria-label", "Previous Slide");
+    $(".owl-nav button.owl-next").attr("aria-label", "Next Slide");
+
+    function updateClasses(event) {
+      // Clear custom classes from all items first
+      var $items = $(".owl-item");
+      $items.removeClass("left-tilt right-tilt");
+
+      var centerIndex;
+
+      if (event.type === 'translate') {
+        // During transition, event.item.index points to the target center index
+        centerIndex = event.item.index;
+      } else {
+        // When initialized or finished, we can rely on the .center class
+        // Use the index of the element with class .center
+        centerIndex = $items.index($items.filter(".center"));
+      }
+
+      // Apply classes to neighbors based on the calculated center index
+      if (centerIndex !== -1 && centerIndex !== undefined) {
+        $items.eq(centerIndex - 1).addClass("left-tilt");
+        $items.eq(centerIndex + 1).addClass("right-tilt");
+      }
+    }
+  </script>
+</body>
+
+</html>
