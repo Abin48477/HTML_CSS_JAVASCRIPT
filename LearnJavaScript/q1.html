@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- write js program to highlight all the words over eight characters long in the paragraph text (with a red background) in v simple  -->
+    <p id="para">
+        This javaScript programming language is fun to learn and exciting.
+    </p>
+
+    <script>
+        const para = document.getElementById("para");
+        const words = para.textContent.split(" ");
+        let highlightedWords = [];
+
+        for (let i = 0; i < words.length; i++) {
+            if (words[i].length >= 8) {
+                highlightedWords.push("<span style='background-color: red;'>" + words[i] + "</span>");
+            } else {
+                highlightedWords.push(words[i]);
+            }
+        }
+
+        para.innerHTML = highlightedWords.join(" ");
+    </script>
+</body>
+</html>
