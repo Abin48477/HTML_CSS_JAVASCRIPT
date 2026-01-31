@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="greet">hello</p>
+    <p>hi</p>
+    <p>namesta</p>
+    <p class="tell">hare krishna</p>
+<p class="text"> nice to meet you all</p>
+<p class="text"> ok sir i am comming</p>
+<!-- function call when click on button with value is click -->
+ <input type="button" onclick=Change() value="click" >
+   
+
+    <script>
+
+        function Change(){
+
+            //accessing the 'p' element by its id and change the content of 'p' element
+    const result = document.getElementById("greet").innerHTML="hello world";
+
+//accessing by TagName
+document.getElementsByTagName("p").style.color="red";
+
+//accessing by class Name
+document.getElementsByClassName("tell").style.color="green";
+
+//accessing by querySelector  🧠 Meaning:
+// Find first element with class text.
+document.querySelector("text").style.background="yello";
+
+
+
+
+}
+    </script>
+</body>
+</html>
