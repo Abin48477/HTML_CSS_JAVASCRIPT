@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<form id="form1" onsubmit="return validateForm()">
+
+<input type="text" class="user">
+<button type="submit">Submit</button>
+
+</form>
+
+<script>
+    function validateForm(){
+        var x = document.querySelector("#form1 .user").value;
+        if(x==""|| x==null){
+            alert("invalid user-Name.");
+            return false;
+        }
+
+        else if(x.length <6||x.length >=20){
+            alert("Please enter your name about 6 character long and less then 20 characters");
+            return false;
+        }
+        return true;
+    }
+
+</script>
+</body>
+</html>
