@@ -1,42 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>DOM Example</title>
 </head>
 <body>
-    <p id="greet">hello</p>
-    <p>hi</p>
-    <p>namesta</p>
-    <p class="tell">hare krishna</p>
-<p class="text"> nice to meet you all</p>
-<p class="text"> ok sir i am comming</p>
-<!-- function call when click on button with value is click -->
- <input type="button" onclick=Change() value="click" >
-   
 
-    <script>
+<p id="greet">hello</p>
+<p>hi</p>
+<p>namaste</p>
 
-        function Change(){
+<p class="tell">hare krishna</p>
 
-            //accessing the 'p' element by its id and change the content of 'p' element
-    const result = document.getElementById("greet").innerHTML="hello world";
+<p class="text">nice to meet you all</p>
+<p class="text">ok sir i am coming</p>
 
-//accessing by TagName
-document.getElementsByTagName("p").style.color="red";
+<p class="item">ram ram</p>
+<p class="item">krishna krishna</p>
+<p class="item">gauranga nityananda</p>
 
-//accessing by class Name
-document.getElementsByClassName("tell").style.color="green";
+<input type="button" value="Click" onclick="change()">
 
-//accessing by querySelector  🧠 Meaning:
-// Find first element with class text.
-document.querySelector("text").style.background="yello";
+<script>
+function change() {
+
+    // 1. Access by ID
+    document.getElementById("greet").innerHTML = "Hello World";
+
+    // 2. Access by Tag Name (2nd <p>)
+    document.getElementsByTagName("p")[1].style.color = "red";
+
+    // 3. Access by Class Name
+    document.getElementsByClassName("tell")[0].style.color = "green";
+
+    // 4. querySelector (first .text)
+    document.querySelector(".text").style.backgroundColor = "yellow";
+
+    // 5. querySelectorAll (all .item)
 
 
+    let items = document.querySelectorAll(".item");
 
-
+    for (let i = 0; i < items.length; i++) {
+        items[i].style.color = "blue";
+    }
 }
-    </script>
+</script>
+
 </body>
 </html>
