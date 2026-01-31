@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Calculator Program in js</h1>
+    <form action="#">
+ Num1: <input type="number" id="num1"><br><br>
+Num2: <input type="number" id="num2"><br><br>
+
+<input type="button" value="Add"
+onclick="document.getElementById('result').value =
+parseFloat(document.getElementById('num1').value) +
+parseFloat(document.getElementById('num2').value)">
+
+<input type="button" value="Subtract"
+onclick="document.getElementById('result').value =
+parseFloat(document.getElementById('num1').value) -
+parseFloat(document.getElementById('num2').value)">
+
+<input type="button" value="Multiply"
+onclick="document.getElementById('result').value =
+parseFloat(document.getElementById('num1').value) *
+parseFloat(document.getElementById('num2').value)">
+
+<input type="button" value="Divide"
+onclick="document.getElementById('result').value =
+parseFloat(document.getElementById('num1').value) /
+parseFloat(document.getElementById('num2').value)"><br><br>
+
+Result: <input type="text" id="result" readonly>
+
+
+    </form>
+ <!-- 👉 When I click a button:
+Take number from box 1
+Take number from box 2
+Do math
+Show answer in result box -->
+</body>
+</html>
