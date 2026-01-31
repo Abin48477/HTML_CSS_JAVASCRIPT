@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <p class="item">hare krishna hare krishna </p>
+        <p class="item">hare ram hare ram</p>
+    </div>
+    <p class="item">jay radha madhava </p>
+
+    <button onclick="change()">click me!</button>
+
+    <script>
+        function change(){
+        //acessby class name is limited only
+        let classSelector = document.getElementsByClassName("item")[2].innerHTML = "jaya sambu";
+
+        //queryselector select the specific one also and all in all also
+        let QuerySelector = document.querySelectorAll("div .item")[1].innerHTML = "jaya matajee";
+        }
+    </script>
+</body>
+</html>
