@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Intermediate Form Validation</title>
+  <style>
+    span { color: red; font-size: 12px; }
+    input, select { margin-bottom: 10px; display: block; }
+  </style>
+</head>
+<body>
+
+<h2>Registration Form</h2>
+
+<form id="regForm" onsubmit="return validateForm()">
+  
+  Name: <input type="text" id="name">
+  <span id="nameError"></span>
+
+  Email: <input type="text" id="email">
+  <span id="emailError"></span>
+
+  Password: <input type="password" id="password">
+  <span id="passwordError"></span>
+
+  Confirm Password: <input type="password" id="confirmPassword">
+  <span id="confirmError"></span>
+
+  Age: <input type="text" id="age">
+  <span id="ageError"></span>
+
+  Gender:
+  <input type="radio" name="gender" value="Male"> Male
+  <input type="radio" name="gender" value="Female"> Female
+  <span id="genderError"></span>
+
+  Country:
+  <select id="country">
+    <option value="">Select</option>
+    <option value="Nepal">Nepal</option>
+    <option value="India">India</option>
+    <option value="USA">USA</option>
+  </select>
+  <span id="countryError"></span>
+
+  <input type="checkbox" id="terms"> I accept Terms & Conditions
+  <span id="termsError"></span>
+
+  <br>
+  <input type="submit" value="Register">
+
+</form>
+
+<script>
+function validateForm() {
+  // Clear previous errors
+  document.getElementById("nameError").innerHTML = "";
+  document.getElementById("emailError").innerHTML = "";
+  document.getElementById("passwordError").innerHTML = "";
+  document.getElementById("confirmError").innerHTML = "";
+  document.getElementById("ageError").innerHTML = "";
+  document.getElementById("genderError").innerHTML = "";
+  document.getElementById("countryError").innerHTML = "";
+  document.getElementById("termsError").innerHTML = "";
+
+  let valid = true; // flag to track validation
+
+  // Name validation
+  let name = document.getElementById("name").value;
+  if (name == "") {
+    document.getElementById("nameError").innerHTML = "Name is required";
+    valid = false;
+  } else if(name.length < 3){
+    document.getElementById("nameError").innerHTML = "Name must be at least 3 characters";
+    valid = false;
+  }
+
+  // Email validation
+  let email = document.getElementById("email").value;
+  if (email == "") {
+    document.getElementById("emailError").innerHTML = "Email is required";
+    valid = false;
+  } else if (!email.includes("@") || !email.includes(".com")) {
+    document.getElementById("emailError").innerHTML = "Email is not valid";
+    valid = false;
+  }
+
+  // Password validation
+  let password = document.getElementById("password").value;
+  if (password == "") {
+    document.getElementById("passwordError").innerHTML = "Password is required";
+    valid = false;
+  } else if (password.length < 6) {
+    document.getElementById("passwordError").innerHTML = "Password must be 6+ characters";
+    valid = false;
+  }
+
+  // Confirm password
+  let confirmPassword = document.getElementById("confirmPassword").value;
+  if (confirmPassword !== password) {
+    document.getElementById("confirmError").innerHTML = "Passwords do not match";
+    valid = false;
+  }
+
+  // Age validation
+  let age = document.getElementById("age").value;
+  if (age == "") {
+    document.getElementById("ageError").innerHTML = "Age is required";
+    valid = false;
+  } else if (isNaN(age) || age < 1 || age > 120) {
+    document.getElementById("ageError").innerHTML = "Enter a valid age";
+    valid = false;
+  }
+
+  // Gender validation
+  let genders = document.getElementsByName("gender");
+  let genderSelected = false;
+  for(let i=0; i<genders.length; i++){
+    if(genders[i].checked){
+      genderSelected = true;
+      break;
+    }
+  }
+  if(!genderSelected){
+    document.getElementById("genderError").innerHTML = "Select Gender";
+    valid = false;
+  }
+
+  // Country validation
+  let country = document.getElementById("country").value;
+  if(country == ""){
+    document.getElementById("countryError").innerHTML = "Select Country";
+    valid = false;
+  }
+
+  // Terms validation
+  let terms = document.getElementById("terms").checked;
+  if(!terms){
+    document.getElementById("termsError").innerHTML = "Accept Terms";
+    valid = false;
+  }
+
+  return valid; // stop submit if false
+}
+</script>
+
+</body>
+</html>
+
+<p>Note:.includes(),isNaN(),.checked,span,</p>
