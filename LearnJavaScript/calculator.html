@@ -7,35 +7,36 @@
 </head>
 <body>
     <h1>Calculator Program in js</h1>
-    <form action="#">
+    <form>
  Num1: <input type="number" id="num1"><br><br>
-Num2: <input type="number" id="num2"><br><br>
+ Num2: <input type="number" id="num2"><br><br>
 
 <input type="button" value="Add"
-onclick="documnet.getElementById('result').value =
- persefloat(document.getElementById('num1').value) +
- persefloat(document.getElementById('num2').value)">
+onclick="document.getElementById('result').value=
+parseFloat(document.getElementById('num1').value)+
+parseFloat(document.getElementById('num2').value)">
 
 <input type="button" value="Sub"
-onclick="documnet.getElementById('result').value =
- persefloat(document.getElementById('num1').value) -
- persefloat(document.getElementById('num2').value)">
+ onclick="document.getElementById('result').value=
+ parseFloat(document.getElementById('num1').value) -
+ parseFloat(document.getElementById('num2').value)">
 
  <input type="button" value="Mux"
-onclick="documnet.getElementById('result').value =
- persefloat(document.getElementById('num1').value) *
- persefloat(document.getElementById('num2').value)">
+ onclick="document.getElementById('result').value =
+ parseFloat(document.getElementById('num1').value) *
+ parseFloat(document.getElementById('num2').value)">
 
  <input type="button" value="div"
-onclick="documnet.getElementById('result').value =
- persefloat(document.getElementById('num1').value) /
- persefloat(document.getElementById('num2').value)">
+ onclick="document.getElementById('result').value =
+ parseFloat(document.getElementById('num1').value) /
+ parseFloat(document.getElementById('num2').value)">
 
  <input type="button" value="Mod"
-onclick="documnet.getElementById('result').value =
- persefloat(document.getElementById('num1').value) %
- persefloat(document.getElementById('num2').value)">
-
+ onclick="document.getElementById('result').value =
+ parseFloat(document.getElementById('num1').value) %
+ parseFloat(document.getElementById('num2').value)">
+<br><br>
+ Result:<input type="text" id="result" readonly>
     </form>
  <!-- 👉 When I click a button:
 Take number from box 1
