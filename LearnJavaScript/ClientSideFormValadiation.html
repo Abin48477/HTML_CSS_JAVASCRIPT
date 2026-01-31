@@ -7,27 +7,48 @@
 </head>
 <body>
 <form id="form1" onsubmit="return validateForm()">
+<!-- What does return validateForm() mean?
+👉 It means:
+“Run the function and return its result (true or false) to the form.” -->
+<input type="text" class="user" placeholder="Enter your Name:"><br><br>
 
-<input type="text" class="user">
+<input type="email" class="email"placeholder="Enter your Email:"><br><br>
+
 <button type="submit">Submit</button>
 
 </form>
 
 <script>
     function validateForm(){
-        var x = document.querySelector("#form1 .user").value;
-        if(x==""|| x==null){
-            alert("invalid user-Name.");
+        var emailName = document.querySelector(".email").value;
+
+        var userName = document.querySelector("#form1 .user").value;
+
+        if(userName==""|| userName=="null"){
+            alert("User Name must be filled.");
+            return false;
+        }
+        else if(userName.length <6){
+            alert("Invalid Name less then 6 characters.");
             return false;
         }
 
-        else if(x.length <6||x.length >=20){
-            alert("Please enter your name about 6 character long and less then 20 characters");
+        if(emailName =="null"){
+            alert("Email must be filled.");
             return false;
         }
+
         return true;
     }
 
 </script>
 </body>
 </html>
+<p>NOTE:return is used to stop or allow form submission; without it, the form submits even if validation fails.</p>
+<p>Think in exam language ⭐<br>
+
+return validateForm() passes the function’s true or false value to onsubmit, which controls form submission. <br>
+
+One-line memory trick 🧠 <br>
+
+Form listens only to RETURN value, not just function call.</p>
