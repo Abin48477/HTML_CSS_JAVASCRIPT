@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<p>hello</p>
+
+</body>
+</html>
+<script>
+
+  let fruits= ["apple","banana","orange"];
+//do loops in fruits and output the fruit 
+fruits.forEach(function(fruit){
+    console.log("Output: "+fruit);
+});  
+</script>
+
+<script>
+    const students=["abin","prabin",'sasin','ashok'];
+    //studentList is big box and inside that big box the students box come and output the result in freind box inside the students box and change all friends  to upper case and return to big box i.e studentList
+    let studentList= students.map((friends)=>{
+        console.log("Output: "+friends);
+        return friends.toUpperCase();
+    });
+console.log(studentList);//shows transformed array big box studentList shows in  new array
+</script>
+<!-- note: map return foreach not return -->
