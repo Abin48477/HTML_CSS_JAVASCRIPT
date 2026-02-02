@@ -1,4 +1,3 @@
-// ...existing code...
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +16,7 @@
     <button id="showBtn">show</button>
     <button id="fadeInBtn">fadeIn</button>
     <button id="fadeOutBtn">fadeOut</button>
-    <button id="toggleBtn">toggle</button>
+    <button id="toggleBtn">toggle & style</button>
 
     <p id="para2">
         Methods example :
@@ -27,29 +26,28 @@
 
     <script>
         $(document).ready(function(){
-            // change paragraph text
+            // change paragraph text using .html()
             $('#btn1').click(function(){
-                $('#para1').text("don't chant this mantra");
+                $('#para1').html("<strong>don't chant this mantra</strong>");
             });
 
             // effects on para2
-            $('#hideBtn').click(function(){
-                 $('#para2').hide();
-                 });
+            $('#hideBtn').click(function(){ 
+                $('#para2').hide(); 
+            });
             $('#showBtn').click(function(){ 
                 $('#para2').show();
-             });
-            $('#fadeInBtn').dblclick(function(){
-                 $('#para2').fadeIn();
-                 });
-            $('#fadeOutBtn').mouseover(function(){ 
+            });
+            $('#fadeInBtn').click(function(){
+                $('#para2').fadeIn();
+            });
+            $('#fadeOutBtn').click(function(){ 
                 $('#para2').fadeOut();
-             });
-            $('#toggleBtn').keypress(function(){ 
-                $('#para2').css(background=red); 
+            });
+            $('#toggleBtn').click(function(){ 
+                $('#para2').toggle().css({'background': 'red', 'color': 'white', 'padding': '10px'});
             });
         });
     </script>
 </body>
 </html>
-// ...existing code...
