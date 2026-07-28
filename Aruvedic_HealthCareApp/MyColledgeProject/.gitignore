@@ -1,0 +1,15 @@
+# Environment variables
+.env
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# VS Code (optional)
+.vscode/
+
+node_modules/
+.env
+dist/
